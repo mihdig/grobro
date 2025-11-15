@@ -45,7 +45,8 @@ let package = Package(
         .testTarget(
             name: "GroBroDomainTests",
             dependencies: [
-                "GroBroDomain"
+                "GroBroDomain",
+                "GroBroPersistence"
             ]
         ),
         .testTarget(

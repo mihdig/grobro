@@ -223,6 +223,11 @@ public struct SubscriptionSettingsView: View {
                 } label: {
                     Label("AC Infinity", systemImage: "dot.radiowaves.up.forward")
                 }
+                NavigationLink {
+                    VivosunSettingsView()
+                } label: {
+                    Label("Vivosun", systemImage: "leaf.circle")
+                }
             } header: {
                 Text("Integrations")
             }

@@ -120,3 +120,10 @@ public final class ACInfinityAPIClient {
     }
 }
 
+// MARK: - DeviceIntegrationClient Conformance
+
+extension ACInfinityAPIClient: DeviceIntegrationClient {
+    public func authenticate(email: String, password: String) async throws -> String {
+        try await login(email: email, password: password)
+    }
+}

@@ -16,6 +16,10 @@ public struct Event: Identifiable, Sendable {
     public var source: EventSource
     public var environmentalData: EnvironmentalData?
     public var lightMeasurement: LightMeasurementData?
+    public var nutrientData: NutrientEventData?
+
+    // Optional correlation data when environmental events coincide with plant events
+    public var correlation: EventCorrelation?
 
     public init(
         id: UUID = UUID(),
@@ -29,7 +33,9 @@ public struct Event: Identifiable, Sendable {
         stressTags: [StressTag] = [],
         source: EventSource = .manual,
         environmentalData: EnvironmentalData? = nil,
-        lightMeasurement: LightMeasurementData? = nil
+        lightMeasurement: LightMeasurementData? = nil,
+        nutrientData: NutrientEventData? = nil,
+        correlation: EventCorrelation? = nil
     ) {
         self.id = id
         self.plantId = plantId
@@ -43,6 +49,19 @@ public struct Event: Identifiable, Sendable {
         self.source = source
         self.environmentalData = environmentalData
         self.lightMeasurement = lightMeasurement
+        self.nutrientData = nutrientData
+        self.correlation = correlation
+    }
+}
+
+/// Correlation data when environmental events coincide with plant events
+public struct EventCorrelation: Codable, Sendable {
+    public var message: String
+    public var relatedEventId: UUID?
+
+    public init(message: String, relatedEventId: UUID? = nil) {
+        self.message = message
+        self.relatedEventId = relatedEventId
     }
 }
 
@@ -50,6 +69,7 @@ public struct Event: Identifiable, Sendable {
 public enum EventSource: String, Codable, Sendable {
     case manual
     case acInfinity
+    case vivosun
     case lightMeter
     case other
 }
@@ -59,15 +79,36 @@ public struct EnvironmentalData: Codable, Sendable {
     public var temperatureFahrenheit: Double?
     public var humidityPercent: Double?
     public var vpdKilopascal: Double?
+    public var deviceName: String?
+    public var visualStyle: EnvironmentalEventStyle
 
     public init(
         temperatureFahrenheit: Double? = nil,
         humidityPercent: Double? = nil,
-        vpdKilopascal: Double? = nil
+        vpdKilopascal: Double? = nil,
+        deviceName: String? = nil,
+        visualStyle: EnvironmentalEventStyle = .automatic
     ) {
         self.temperatureFahrenheit = temperatureFahrenheit
         self.humidityPercent = humidityPercent
         self.vpdKilopascal = vpdKilopascal
+        self.deviceName = deviceName
+        self.visualStyle = visualStyle
+    }
+
+    /// Calculate VPD from temperature and humidity
+    public static func calculateVPD(temperatureFahrenheit: Double, humidityPercent: Double) -> Double {
+        // Convert Fahrenheit to Celsius
+        let tempC = (temperatureFahrenheit - 32) * 5 / 9
+
+        // Calculate saturation vapor pressure (kPa)
+        let svp = 0.6108 * exp((17.27 * tempC) / (tempC + 237.3))
+
+        // Calculate actual vapor pressure
+        let avp = svp * (humidityPercent / 100)
+
+        // VPD = SVP - AVP
+        return svp - avp
     }
 }
 
@@ -91,5 +132,80 @@ public struct LightMeasurementData: Codable, Sendable {
         self.dli = dli
         self.lightTypeIdentifier = lightTypeIdentifier
         self.distanceMeters = distanceMeters
+    }
+}
+
+/// Nutrient data associated with a feeding event
+public struct NutrientEventData: Codable, Sendable {
+    /// Brand used for feeding
+    public var brand: String?
+
+    /// Product line (e.g., "Flora Series", "pH Perfect")
+    public var productLine: String?
+
+    /// List of products and dosages
+    public var dosages: [ProductDosage]?
+
+    /// PPM/EC readings
+    public var feedPPM: Double?
+    public var feedEC: Double?
+    public var runoffPPM: Double?
+    public var runoffEC: Double?
+
+    /// pH readings
+    public var feedPH: Double?
+    public var runoffPH: Double?
+
+    /// Reservoir volume
+    public var reservoirVolumeLiters: Double?
+
+    /// Optional recipe reference for reuse
+    public var recipeId: UUID?
+    public var recipeName: String?
+
+    /// Cost tracking (Pro feature)
+    public var totalCost: Double?
+
+    public init(
+        brand: String? = nil,
+        productLine: String? = nil,
+        dosages: [ProductDosage]? = nil,
+        feedPPM: Double? = nil,
+        feedEC: Double? = nil,
+        runoffPPM: Double? = nil,
+        runoffEC: Double? = nil,
+        feedPH: Double? = nil,
+        runoffPH: Double? = nil,
+        reservoirVolumeLiters: Double? = nil,
+        recipeId: UUID? = nil,
+        recipeName: String? = nil,
+        totalCost: Double? = nil
+    ) {
+        self.brand = brand
+        self.productLine = productLine
+        self.dosages = dosages
+        self.feedPPM = feedPPM
+        self.feedEC = feedEC
+        self.runoffPPM = runoffPPM
+        self.runoffEC = runoffEC
+        self.feedPH = feedPH
+        self.runoffPH = runoffPH
+        self.reservoirVolumeLiters = reservoirVolumeLiters
+        self.recipeId = recipeId
+        self.recipeName = recipeName
+        self.totalCost = totalCost
+    }
+}
+
+/// Product and dosage for nutrient event data
+public struct ProductDosage: Codable, Sendable {
+    public var productName: String
+    public var amount: Double
+    public var unit: String
+
+    public init(productName: String, amount: Double, unit: String) {
+        self.productName = productName
+        self.amount = amount
+        self.unit = unit
     }
 }

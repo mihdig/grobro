@@ -5,6 +5,7 @@ import GroBroDomain
 public struct DiaryView: View {
     @StateObject private var viewModel: DiaryViewModel
     @State private var showingEventCreation = false
+    @State private var showingNutrientEventCreation = false
     @State private var selectedEventType: EventType = .watering
 
     public init(viewModel: DiaryViewModel) {
@@ -51,7 +52,12 @@ public struct DiaryView: View {
                     ForEach(EventType.allCases, id: \.self) { type in
                         Button {
                             selectedEventType = type
-                            showingEventCreation = true
+                            // Use nutrient creation view for feeding events on iOS 18+
+                            if type == .feeding, #available(iOS 18.0, *) {
+                                showingNutrientEventCreation = true
+                            } else {
+                                showingEventCreation = true
+                            }
                         } label: {
                             Label(type.displayName, systemImage: type.iconName)
                         }
@@ -65,6 +71,14 @@ public struct DiaryView: View {
             EventCreationView(
                 viewModel: viewModel.makeEventCreationViewModel(type: selectedEventType)
             )
+        }
+        .sheet(isPresented: $showingNutrientEventCreation) {
+            if #available(iOS 18.0, *) {
+                NutrientEventCreationView(
+                    plantId: viewModel.plantId,
+                    eventStore: viewModel.eventStore
+                )
+            }
         }
         .onAppear {
             viewModel.loadEvents()
@@ -122,7 +136,12 @@ struct EventRowView: View {
                 Text(event.type.displayName)
                     .font(.headline)
 
-                if event.type == .lightCheck, let measurement = event.lightMeasurement {
+                // Nutrient data for feeding events
+                if event.type == .feeding, let nutrientData = event.nutrientData {
+                    Text(nutrientSummary(from: nutrientData))
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                } else if event.type == .lightCheck, let measurement = event.lightMeasurement {
                     Text(lightSummary(from: measurement))
                         .font(.subheadline)
                         .foregroundColor(.secondary)
@@ -145,14 +164,38 @@ struct EventRowView: View {
                         .foregroundColor(.orange)
                 }
 
-                Text(event.timestamp, style: .relative)
-                    .font(.caption2)
-                    .foregroundColor(.secondary)
+                HStack(spacing: 6) {
+                    Text(event.timestamp, style: .relative)
+                        .font(.caption2)
+                        .foregroundColor(.secondary)
+
+                    if let badgeText = event.source.badgeLabel {
+                        EventSourceBadge(text: badgeText, color: event.source.badgeTint)
+                    }
+                }
             }
 
             Spacer()
         }
         .padding(.vertical, 4)
+    }
+
+    private func nutrientSummary(from nutrientData: NutrientEventData) -> String {
+        var parts: [String] = []
+
+        if let brand = nutrientData.brand {
+            parts.append(brand)
+        }
+
+        if let ppm = nutrientData.feedPPM {
+            parts.append("\(Int(ppm)) PPM")
+        }
+
+        if let ph = nutrientData.feedPH {
+            parts.append("pH \(String(format: "%.1f", ph))")
+        }
+
+        return parts.joined(separator: " • ")
     }
 
     private func lightSummary(from measurement: LightMeasurementData) -> String {
@@ -167,6 +210,53 @@ struct EventRowView: View {
             return "\(ppfdText) • \(Int(lux)) lx"
         } else {
             return ppfdText
+        }
+    }
+}
+
+private struct EventSourceBadge: View {
+    let text: String
+    let color: Color
+
+    var body: some View {
+        Text(text)
+            .font(.caption2)
+            .padding(.horizontal, 6)
+            .padding(.vertical, 2)
+            .foregroundColor(color)
+            .background(color.opacity(0.12))
+            .clipShape(Capsule())
+    }
+}
+
+private extension EventSource {
+    var badgeLabel: String? {
+        switch self {
+        case .manual:
+            return nil
+        case .acInfinity:
+            return "AC Infinity"
+        case .vivosun:
+            return "Vivosun"
+        case .lightMeter:
+            return "Light Meter"
+        case .other:
+            return "Automated"
+        }
+    }
+
+    var badgeTint: Color {
+        switch self {
+        case .manual:
+            return .secondary
+        case .acInfinity:
+            return .blue
+        case .vivosun:
+            return .green
+        case .lightMeter:
+            return .orange
+        case .other:
+            return .purple
         }
     }
 }

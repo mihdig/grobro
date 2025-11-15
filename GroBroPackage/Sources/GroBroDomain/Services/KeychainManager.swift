@@ -82,3 +82,10 @@ public struct KeychainManager {
     }
 }
 
+public protocol KeychainManaging {
+    func store(password: String, account: String) throws
+    func retrievePassword(account: String) throws -> String?
+    func deletePassword(account: String) throws
+}
+
+extension KeychainManager: KeychainManaging {}
