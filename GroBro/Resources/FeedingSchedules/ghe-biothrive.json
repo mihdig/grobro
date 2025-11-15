@@ -1,0 +1,138 @@
+{
+  "id": "C3D4E5F6-G7H8-4901-C234-567890123456",
+  "brand": "general_hydroponics",
+  "productLine": "bio_thrive",
+  "name": "GHE BioThrive Organic",
+  "description": "100% organic and vegan nutrient system. Designed for soil and soilless organic growing. OMRI listed.",
+  "products": ["BioThrive Grow", "BioThrive Bloom"],
+  "safetyNotes": [
+    "Organic nutrients - may cause foaming or odor",
+    "Shake bottles well before use",
+    "Keep refrigerated after opening for best results",
+    "May slightly cloud solution - this is normal",
+    "Compatible with beneficial microbes and organic growing"
+  ],
+  "weeks": [
+    {
+      "id": "W1-SEED-BIO",
+      "weekNumber": 1,
+      "stage": "seedling",
+      "stageName": "Seedling/Clone",
+      "productDosages": [
+        {"productName": "BioThrive Grow", "mlPerGallon": 5.0, "mlPerLiter": 1.32},
+        {"productName": "BioThrive Bloom", "mlPerGallon": 2.5, "mlPerLiter": 0.66}
+      ],
+      "notes": "Light organic feeding. EC target: 0.6-0.8"
+    },
+    {
+      "id": "W2-EARLY-VEG-BIO",
+      "weekNumber": 2,
+      "stage": "early_vegetative",
+      "stageName": "Early Vegetative",
+      "productDosages": [
+        {"productName": "BioThrive Grow", "mlPerGallon": 7.5, "mlPerLiter": 1.98},
+        {"productName": "BioThrive Bloom", "mlPerGallon": 2.5, "mlPerLiter": 0.66}
+      ],
+      "notes": "Building organic foundation. EC target: 0.8-1.0"
+    },
+    {
+      "id": "W3-VEG-BIO",
+      "weekNumber": 3,
+      "stage": "early_vegetative",
+      "stageName": "Vegetative Growth",
+      "productDosages": [
+        {"productName": "BioThrive Grow", "mlPerGallon": 10.0, "mlPerLiter": 2.64},
+        {"productName": "BioThrive Bloom", "mlPerGallon": 5.0, "mlPerLiter": 1.32}
+      ],
+      "notes": "Active vegetative growth. EC target: 1.0-1.3"
+    },
+    {
+      "id": "W4-LATE-VEG-BIO",
+      "weekNumber": 4,
+      "stage": "late_vegetative",
+      "stageName": "Late Vegetative",
+      "productDosages": [
+        {"productName": "BioThrive Grow", "mlPerGallon": 15.0, "mlPerLiter": 3.96},
+        {"productName": "BioThrive Bloom", "mlPerGallon": 5.0, "mlPerLiter": 1.32}
+      ],
+      "notes": "Peak vegetative phase. EC target: 1.2-1.5"
+    },
+    {
+      "id": "W5-TRANS-BIO",
+      "weekNumber": 5,
+      "stage": "transition",
+      "stageName": "Transition to Bloom",
+      "productDosages": [
+        {"productName": "BioThrive Grow", "mlPerGallon": 10.0, "mlPerLiter": 2.64},
+        {"productName": "BioThrive Bloom", "mlPerGallon": 10.0, "mlPerLiter": 2.64}
+      ],
+      "notes": "Equal Grow and Bloom. EC target: 1.3-1.6"
+    },
+    {
+      "id": "W6-EARLY-BLOOM-BIO",
+      "weekNumber": 6,
+      "stage": "early_flowering",
+      "stageName": "Early Flowering",
+      "productDosages": [
+        {"productName": "BioThrive Grow", "mlPerGallon": 5.0, "mlPerLiter": 1.32},
+        {"productName": "BioThrive Bloom", "mlPerGallon": 15.0, "mlPerLiter": 3.96}
+      ],
+      "notes": "Shift to Bloom focus. EC target: 1.4-1.7"
+    },
+    {
+      "id": "W7-BLOOM-BIO",
+      "weekNumber": 7,
+      "stage": "early_flowering",
+      "stageName": "Active Flowering",
+      "productDosages": [
+        {"productName": "BioThrive Grow", "mlPerGallon": 2.5, "mlPerLiter": 0.66},
+        {"productName": "BioThrive Bloom", "mlPerGallon": 20.0, "mlPerLiter": 5.28}
+      ],
+      "notes": "Heavy bloom feeding. EC target: 1.5-1.9"
+    },
+    {
+      "id": "W8-MID-BLOOM-BIO",
+      "weekNumber": 8,
+      "stage": "mid_flowering",
+      "stageName": "Mid Flowering",
+      "productDosages": [
+        {"productName": "BioThrive Grow", "mlPerGallon": 0.0, "mlPerLiter": 0.0},
+        {"productName": "BioThrive Bloom", "mlPerGallon": 20.0, "mlPerLiter": 5.28}
+      ],
+      "notes": "Bloom only. EC target: 1.6-2.0"
+    },
+    {
+      "id": "W9-LATE-BLOOM-BIO",
+      "weekNumber": 9,
+      "stage": "late_flowering",
+      "stageName": "Late Flowering",
+      "productDosages": [
+        {"productName": "BioThrive Grow", "mlPerGallon": 0.0, "mlPerLiter": 0.0},
+        {"productName": "BioThrive Bloom", "mlPerGallon": 15.0, "mlPerLiter": 3.96}
+      ],
+      "notes": "Reduce feeding for ripening. EC target: 1.2-1.6"
+    },
+    {
+      "id": "W10-RIPEN-BIO",
+      "weekNumber": 10,
+      "stage": "late_flowering",
+      "stageName": "Final Ripening",
+      "productDosages": [
+        {"productName": "BioThrive Grow", "mlPerGallon": 0.0, "mlPerLiter": 0.0},
+        {"productName": "BioThrive Bloom", "mlPerGallon": 10.0, "mlPerLiter": 2.64}
+      ],
+      "notes": "Light feeding for finish. EC target: 0.8-1.2"
+    },
+    {
+      "id": "W11-FLUSH-BIO",
+      "weekNumber": 11,
+      "stage": "flush",
+      "stageName": "Organic Flush",
+      "productDosages": [
+        {"productName": "BioThrive Grow", "mlPerGallon": 0.0, "mlPerLiter": 0.0},
+        {"productName": "BioThrive Bloom", "mlPerGallon": 0.0, "mlPerLiter": 0.0}
+      ],
+      "notes": "Pure water. Organic nutrients flush faster than synthetics."
+    }
+  ]
+}

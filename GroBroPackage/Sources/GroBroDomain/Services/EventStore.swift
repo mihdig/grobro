@@ -77,6 +77,7 @@ public final class EventStore: ObservableObject {
         var source: EventSource?
         var environmentalData: EnvironmentalData?
         var lightMeasurement: LightMeasurementData?
+        var nutrientData: NutrientEventData?
     }
 
     private func toDomain(_ entity: EventEntity) -> Event? {
@@ -111,7 +112,8 @@ public final class EventStore: ObservableObject {
             stressTags: stressTags,
             source: metadata?.source ?? .manual,
             environmentalData: metadata?.environmentalData,
-            lightMeasurement: metadata?.lightMeasurement
+            lightMeasurement: metadata?.lightMeasurement,
+            nutrientData: metadata?.nutrientData
         )
     }
 
@@ -136,7 +138,8 @@ public final class EventStore: ObservableObject {
         let metadata = EventMetadata(
             source: event.source,
             environmentalData: event.environmentalData,
-            lightMeasurement: event.lightMeasurement
+            lightMeasurement: event.lightMeasurement,
+            nutrientData: event.nutrientData
         )
 
         if let data = try? JSONEncoder().encode(metadata),

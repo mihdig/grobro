@@ -8,8 +8,8 @@ public final class DiaryViewModel: ObservableObject {
     @Published public var showError: Bool = false
     @Published public var errorMessage: String = ""
 
-    private let plantId: UUID
-    private let eventStore: EventStore
+    public let plantId: UUID
+    public let eventStore: EventStore
 
     public var filteredEvents: [Event] {
         events.filter { selectedTypes.contains($0.type) }

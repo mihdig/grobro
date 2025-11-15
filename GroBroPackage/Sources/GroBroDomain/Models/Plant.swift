@@ -11,6 +11,8 @@ public struct Plant: Identifiable, Sendable {
     public var potSizeLiters: Double?
     public var substrateType: SubstrateType?
     public var lightHoursPerDay: Double?
+    public var lightDistance: Double? // Distance from light to canopy in inches
+    public var lightType: LightType?
     public var notes: String?
     public var isArchived: Bool
     public var photoAssetId: String?
@@ -30,6 +32,8 @@ public struct Plant: Identifiable, Sendable {
         potSizeLiters: Double? = nil,
         substrateType: SubstrateType? = nil,
         lightHoursPerDay: Double? = nil,
+        lightDistance: Double? = nil,
+        lightType: LightType? = nil,
         notes: String? = nil,
         isArchived: Bool = false,
         photoAssetId: String? = nil
@@ -43,6 +47,8 @@ public struct Plant: Identifiable, Sendable {
         self.potSizeLiters = potSizeLiters
         self.substrateType = substrateType
         self.lightHoursPerDay = lightHoursPerDay
+        self.lightDistance = lightDistance
+        self.lightType = lightType
         self.notes = notes
         self.isArchived = isArchived
         self.photoAssetId = photoAssetId

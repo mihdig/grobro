@@ -20,6 +20,10 @@ struct AppEntry: App {
     @MainActor
     @State private var environmentalDataStore: EnvironmentalDataStore
 
+    // Onboarding manager
+    @MainActor
+    @State private var onboardingManager = OnboardingManager()
+
     @MainActor
     private var plantStore: PlantStore {
         PlantStore(persistenceController: persistenceController)
@@ -40,7 +44,7 @@ struct AppEntry: App {
             initialValue: EnvironmentalDataStore(deviceStore: deviceStore)
         )
     }
-
+    
     var body: some Scene {
         WindowGroup {
             ZStack {
@@ -48,12 +52,17 @@ struct AppEntry: App {
                 Color.deepBackground
                     .ignoresSafeArea()
 
-                GardenContainerView(plantStore: plantStore, eventStore: eventStore)
+                if onboardingManager.shouldShowOnboarding {
+                    WelcomeView()
+                } else {
+                    GardenContainerView(plantStore: plantStore, eventStore: eventStore)
+                }
             }
             .environment(\.managedObjectContext, persistenceController.viewContext)
             .environment(proManager)
-            .environment(deviceStore)              // NEW
-            .environment(environmentalDataStore)   // NEW
+            .environment(deviceStore)              // Smart Greenhouse
+            .environment(environmentalDataStore)   // Smart Greenhouse
+            .environment(onboardingManager)        // Onboarding
             .preferredColorScheme(.dark)  // Force dark mode for Smart Greenhouse aesthetic
         }
     }

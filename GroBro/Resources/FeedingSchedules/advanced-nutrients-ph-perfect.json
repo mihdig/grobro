@@ -1,0 +1,149 @@
+{
+  "id": "B2C3D4E5-F6G7-4890-B123-456789012345",
+  "brand": "advanced_nutrients",
+  "productLine": "ph_perfect_gmb",
+  "name": "Advanced Nutrients pH Perfect (Grow, Micro, Bloom)",
+  "description": "pH Perfect® Technology automatically balances pH throughout the grow cycle. Professional 3-part base nutrients for all growing mediums.",
+  "products": ["pH Perfect Micro", "pH Perfect Grow", "pH Perfect Bloom"],
+  "safetyNotes": [
+    "Add Micro first, then Grow, then Bloom - never mix concentrates",
+    "pH Perfect technology works between 4.5-8.5 pH range",
+    "Start with lower doses and increase gradually",
+    "Designed for RO or low-PPM water (under 100 PPM)",
+    "Allow solution to stabilize 15-20 minutes after mixing"
+  ],
+  "weeks": [
+    {
+      "id": "W1-SEED-AN",
+      "weekNumber": 1,
+      "stage": "seedling",
+      "stageName": "Seedling/Clone",
+      "productDosages": [
+        {"productName": "pH Perfect Micro", "mlPerGallon": 3.8, "mlPerLiter": 1.0},
+        {"productName": "pH Perfect Grow", "mlPerGallon": 3.8, "mlPerLiter": 1.0},
+        {"productName": "pH Perfect Bloom", "mlPerGallon": 3.8, "mlPerLiter": 1.0}
+      ],
+      "notes": "Light feeding for young plants. PPM target: 400-500"
+    },
+    {
+      "id": "W2-EARLY-VEG-AN",
+      "weekNumber": 2,
+      "stage": "early_vegetative",
+      "stageName": "Early Vegetative",
+      "productDosages": [
+        {"productName": "pH Perfect Micro", "mlPerGallon": 7.6, "mlPerLiter": 2.0},
+        {"productName": "pH Perfect Grow", "mlPerGallon": 7.6, "mlPerLiter": 2.0},
+        {"productName": "pH Perfect Bloom", "mlPerGallon": 7.6, "mlPerLiter": 2.0}
+      ],
+      "notes": "Building structure. PPM target: 650-750"
+    },
+    {
+      "id": "W3-VEG-AN",
+      "weekNumber": 3,
+      "stage": "early_vegetative",
+      "stageName": "Vegetative Growth",
+      "productDosages": [
+        {"productName": "pH Perfect Micro", "mlPerGallon": 11.4, "mlPerLiter": 3.0},
+        {"productName": "pH Perfect Grow", "mlPerGallon": 11.4, "mlPerLiter": 3.0},
+        {"productName": "pH Perfect Bloom", "mlPerGallon": 11.4, "mlPerLiter": 3.0}
+      ],
+      "notes": "Vigorous growth. PPM target: 850-950"
+    },
+    {
+      "id": "W4-LATE-VEG-AN",
+      "weekNumber": 4,
+      "stage": "late_vegetative",
+      "stageName": "Late Vegetative",
+      "productDosages": [
+        {"productName": "pH Perfect Micro", "mlPerGallon": 15.2, "mlPerLiter": 4.0},
+        {"productName": "pH Perfect Grow", "mlPerGallon": 15.2, "mlPerLiter": 4.0},
+        {"productName": "pH Perfect Bloom", "mlPerGallon": 15.2, "mlPerLiter": 4.0}
+      ],
+      "notes": "Peak vegetative growth. PPM target: 1000-1100"
+    },
+    {
+      "id": "W5-TRANS-AN",
+      "weekNumber": 5,
+      "stage": "transition",
+      "stageName": "Transition/Pre-Flower",
+      "productDosages": [
+        {"productName": "pH Perfect Micro", "mlPerGallon": 15.2, "mlPerLiter": 4.0},
+        {"productName": "pH Perfect Grow", "mlPerGallon": 15.2, "mlPerLiter": 4.0},
+        {"productName": "pH Perfect Bloom", "mlPerGallon": 15.2, "mlPerLiter": 4.0}
+      ],
+      "notes": "Transitioning to flower. Switch light cycle. PPM target: 1100-1200"
+    },
+    {
+      "id": "W6-EARLY-BLOOM-AN",
+      "weekNumber": 6,
+      "stage": "early_flowering",
+      "stageName": "Early Flowering",
+      "productDosages": [
+        {"productName": "pH Perfect Micro", "mlPerGallon": 15.2, "mlPerLiter": 4.0},
+        {"productName": "pH Perfect Grow", "mlPerGallon": 15.2, "mlPerLiter": 4.0},
+        {"productName": "pH Perfect Bloom", "mlPerGallon": 15.2, "mlPerLiter": 4.0}
+      ],
+      "notes": "Flower site development. PPM target: 1200-1350"
+    },
+    {
+      "id": "W7-BLOOM-AN",
+      "weekNumber": 7,
+      "stage": "early_flowering",
+      "stageName": "Active Flowering",
+      "productDosages": [
+        {"productName": "pH Perfect Micro", "mlPerGallon": 15.2, "mlPerLiter": 4.0},
+        {"productName": "pH Perfect Grow", "mlPerGallon": 15.2, "mlPerLiter": 4.0},
+        {"productName": "pH Perfect Bloom", "mlPerGallon": 15.2, "mlPerLiter": 4.0}
+      ],
+      "notes": "Active flower production. PPM target: 1350-1450"
+    },
+    {
+      "id": "W8-MID-BLOOM-AN",
+      "weekNumber": 8,
+      "stage": "mid_flowering",
+      "stageName": "Mid Flowering",
+      "productDosages": [
+        {"productName": "pH Perfect Micro", "mlPerGallon": 15.2, "mlPerLiter": 4.0},
+        {"productName": "pH Perfect Grow", "mlPerGallon": 15.2, "mlPerLiter": 4.0},
+        {"productName": "pH Perfect Bloom", "mlPerGallon": 15.2, "mlPerLiter": 4.0}
+      ],
+      "notes": "Peak flowering. PPM target: 1400-1500"
+    },
+    {
+      "id": "W9-LATE-BLOOM-AN",
+      "weekNumber": 9,
+      "stage": "mid_flowering",
+      "stageName": "Late Flowering",
+      "productDosages": [
+        {"productName": "pH Perfect Micro", "mlPerGallon": 11.4, "mlPerLiter": 3.0},
+        {"productName": "pH Perfect Grow", "mlPerGallon": 11.4, "mlPerLiter": 3.0},
+        {"productName": "pH Perfect Bloom", "mlPerGallon": 11.4, "mlPerLiter": 3.0}
+      ],
+      "notes": "Ripening phase. Reduce feeding. PPM target: 1100-1250"
+    },
+    {
+      "id": "W10-RIPEN-AN",
+      "weekNumber": 10,
+      "stage": "late_flowering",
+      "stageName": "Final Ripening",
+      "productDosages": [
+        {"productName": "pH Perfect Micro", "mlPerGallon": 7.6, "mlPerLiter": 2.0},
+        {"productName": "pH Perfect Grow", "mlPerGallon": 7.6, "mlPerLiter": 2.0},
+        {"productName": "pH Perfect Bloom", "mlPerGallon": 7.6, "mlPerLiter": 2.0}
+      ],
+      "notes": "Final ripening. Light feeding. PPM target: 700-900"
+    },
+    {
+      "id": "W11-FLUSH-AN",
+      "weekNumber": 11,
+      "stage": "flush",
+      "stageName": "Pre-Harvest Flush",
+      "productDosages": [
+        {"productName": "pH Perfect Micro", "mlPerGallon": 0.0, "mlPerLiter": 0.0},
+        {"productName": "pH Perfect Grow", "mlPerGallon": 0.0, "mlPerLiter": 0.0},
+        {"productName": "pH Perfect Bloom", "mlPerGallon": 0.0, "mlPerLiter": 0.0}
+      ],
+      "notes": "Pure water only. Final flush for clean finish."
+    }
+  ]
+}

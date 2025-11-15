@@ -5,9 +5,11 @@ import GroBroDomain
 public struct GardenView: View {
     @StateObject private var viewModel: GardenViewModel
     @Environment(ProEntitlementManager.self) private var proManager
+    @Environment(OnboardingManager.self) private var onboardingManager
     @State private var showingCreatePlant = false
     @State private var showingUpgradePrompt = false
     @State private var showingSettings = false
+    @State private var showingLegalDisclaimer = false
 
     public init(viewModel: GardenViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
@@ -57,6 +59,13 @@ public struct GardenView: View {
             .sheet(isPresented: $showingCreatePlant) {
                 PlantCreationView(viewModel: viewModel.makeCreationViewModel())
             }
+            .sheet(isPresented: $showingLegalDisclaimer) {
+                if #available(iOS 17.0, *) {
+                    LegalDisclaimerView {
+                        showingCreatePlant = true
+                    }
+                }
+            }
             .sheet(isPresented: $showingUpgradePrompt) {
                 if #available(iOS 18.0, macOS 15.0, *) {
                     UpgradeToProView()
@@ -81,6 +90,12 @@ public struct GardenView: View {
     }
 
     private func handleAddPlant() {
+        // Require legal terms acceptance before creating the first plant
+        guard onboardingManager.hasAcceptedTerms else {
+            showingLegalDisclaimer = true
+            return
+        }
+
         // Check if user can create more plants
         let currentCount = viewModel.plants.count
         if proManager.canCreatePlant(currentPlantCount: currentCount) {

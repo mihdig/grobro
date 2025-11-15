@@ -1,0 +1,137 @@
+{
+  "id": "A1B2C3D4-E5F6-4789-A012-345678901234",
+  "brand": "general_hydroponics",
+  "productLine": "flora_series",
+  "name": "GHE Flora Series (Recirculating)",
+  "description": "Professional 3-part nutrient system for hydroponic and soil-less growing. Optimized for recirculating systems like DWC and flood tables.",
+  "products": ["FloraMicro", "FloraGro", "FloraBloom"],
+  "safetyNotes": [
+    "Always add nutrients to water, never water to nutrients",
+    "Mix FloraMicro first, then FloraGro, then FloraBloom",
+    "Wear gloves when handling concentrated nutrients",
+    "Adjust pH AFTER adding all nutrients (target 5.5-6.5)",
+    "Monitor EC/PPM regularly - start with lower doses for sensitive plants"
+  ],
+  "weeks": [
+    {
+      "id": "W1-SEED",
+      "weekNumber": 1,
+      "stage": "seedling",
+      "stageName": "Seedling/Clone",
+      "productDosages": [
+        {"productName": "FloraMicro", "mlPerGallon": 2.5, "mlPerLiter": 0.66},
+        {"productName": "FloraGro", "mlPerGallon": 2.5, "mlPerLiter": 0.66},
+        {"productName": "FloraBloom", "mlPerGallon": 2.5, "mlPerLiter": 0.66}
+      ],
+      "notes": "Light feeding for young plants. EC target: 0.8-1.0"
+    },
+    {
+      "id": "W2-EARLY-VEG",
+      "weekNumber": 2,
+      "stage": "early_vegetative",
+      "stageName": "Early Vegetative",
+      "productDosages": [
+        {"productName": "FloraMicro", "mlPerGallon": 5.0, "mlPerLiter": 1.32},
+        {"productName": "FloraGro", "mlPerGallon": 5.0, "mlPerLiter": 1.32},
+        {"productName": "FloraBloom", "mlPerGallon": 5.0, "mlPerLiter": 1.32}
+      ],
+      "notes": "Building root system. EC target: 1.0-1.2"
+    },
+    {
+      "id": "W3-VEG",
+      "weekNumber": 3,
+      "stage": "early_vegetative",
+      "stageName": "Vegetative Growth",
+      "productDosages": [
+        {"productName": "FloraMicro", "mlPerGallon": 5.0, "mlPerLiter": 1.32},
+        {"productName": "FloraGro", "mlPerGallon": 10.0, "mlPerLiter": 2.64},
+        {"productName": "FloraBloom", "mlPerGallon": 5.0, "mlPerLiter": 1.32}
+      ],
+      "notes": "Aggressive vegetative growth. EC target: 1.2-1.6"
+    },
+    {
+      "id": "W4-VEG",
+      "weekNumber": 4,
+      "stage": "late_vegetative",
+      "stageName": "Late Vegetative",
+      "productDosages": [
+        {"productName": "FloraMicro", "mlPerGallon": 5.0, "mlPerLiter": 1.32},
+        {"productName": "FloraGro", "mlPerGallon": 10.0, "mlPerLiter": 2.64},
+        {"productName": "FloraBloom", "mlPerGallon": 5.0, "mlPerLiter": 1.32}
+      ],
+      "notes": "Peak vegetative growth. EC target: 1.2-1.6"
+    },
+    {
+      "id": "W5-TRANS",
+      "weekNumber": 5,
+      "stage": "transition",
+      "stageName": "Transition to Bloom",
+      "productDosages": [
+        {"productName": "FloraMicro", "mlPerGallon": 7.5, "mlPerLiter": 1.98},
+        {"productName": "FloraGro", "mlPerGallon": 5.0, "mlPerLiter": 1.32},
+        {"productName": "FloraBloom", "mlPerGallon": 7.5, "mlPerLiter": 1.98}
+      ],
+      "notes": "Transitioning to flower. Reduce Grow, increase Bloom. EC target: 1.4-1.8"
+    },
+    {
+      "id": "W6-EARLY-BLOOM",
+      "weekNumber": 6,
+      "stage": "early_flowering",
+      "stageName": "Early Flowering",
+      "productDosages": [
+        {"productName": "FloraMicro", "mlPerGallon": 7.5, "mlPerLiter": 1.98},
+        {"productName": "FloraGro", "mlPerGallon": 2.5, "mlPerLiter": 0.66},
+        {"productName": "FloraBloom", "mlPerGallon": 10.0, "mlPerLiter": 2.64}
+      ],
+      "notes": "Flower initiation. EC target: 1.6-2.0"
+    },
+    {
+      "id": "W7-BLOOM",
+      "weekNumber": 7,
+      "stage": "early_flowering",
+      "stageName": "Flowering",
+      "productDosages": [
+        {"productName": "FloraMicro", "mlPerGallon": 7.5, "mlPerLiter": 1.98},
+        {"productName": "FloraGro", "mlPerGallon": 2.5, "mlPerLiter": 0.66},
+        {"productName": "FloraBloom", "mlPerGallon": 12.5, "mlPerLiter": 3.30}
+      ],
+      "notes": "Active flowering. EC target: 1.8-2.2"
+    },
+    {
+      "id": "W8-MID-BLOOM",
+      "weekNumber": 8,
+      "stage": "mid_flowering",
+      "stageName": "Mid Flowering",
+      "productDosages": [
+        {"productName": "FloraMicro", "mlPerGallon": 5.0, "mlPerLiter": 1.32},
+        {"productName": "FloraGro", "mlPerGallon": 0.0, "mlPerLiter": 0.0},
+        {"productName": "FloraBloom", "mlPerGallon": 15.0, "mlPerLiter": 3.96}
+      ],
+      "notes": "Peak flowering. No Grow needed. EC target: 2.0-2.4"
+    },
+    {
+      "id": "W9-LATE-BLOOM",
+      "weekNumber": 9,
+      "stage": "late_flowering",
+      "stageName": "Late Flowering",
+      "productDosages": [
+        {"productName": "FloraMicro", "mlPerGallon": 5.0, "mlPerLiter": 1.32},
+        {"productName": "FloraGro", "mlPerGallon": 0.0, "mlPerLiter": 0.0},
+        {"productName": "FloraBloom", "mlPerGallon": 15.0, "mlPerLiter": 3.96}
+      ],
+      "notes": "Ripening phase. EC target: 1.8-2.2"
+    },
+    {
+      "id": "W10-FLUSH",
+      "weekNumber": 10,
+      "stage": "flush",
+      "stageName": "Final Flush",
+      "productDosages": [
+        {"productName": "FloraMicro", "mlPerGallon": 0.0, "mlPerLiter": 0.0},
+        {"productName": "FloraGro", "mlPerGallon": 0.0, "mlPerLiter": 0.0},
+        {"productName": "FloraBloom", "mlPerGallon": 0.0, "mlPerLiter": 0.0}
+      ],
+      "notes": "Pure water only. Remove nutrient salts from medium and plant tissue."
+    }
+  ]
+}

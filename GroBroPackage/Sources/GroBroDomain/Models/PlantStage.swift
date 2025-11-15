@@ -5,6 +5,8 @@ public enum PlantStage: String, Codable, CaseIterable, Sendable {
     case seedling
     case vegetative
     case flowering
+    case drying
+    case curing
 
     /// User-friendly display name
     public var displayName: String {
@@ -15,6 +17,10 @@ public enum PlantStage: String, Codable, CaseIterable, Sendable {
             return "Vegetative"
         case .flowering:
             return "Flowering"
+        case .drying:
+            return "Drying"
+        case .curing:
+            return "Curing"
         }
     }
 }
