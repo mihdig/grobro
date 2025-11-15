@@ -2,291 +2,235 @@
 
 ## Overview
 
-This document outlines the complete product vision for GroBro across 5 major epics, from MVP to advanced features.
+This document outlines the complete product vision for GroBro across **8 major epics**, from MVP to advanced features including Smart Greenhouse design implementation and nutrient management.
 
 ## Epic Status Summary
 
 | Epic | Status | Stories | Priority | Target Release |
 |------|--------|---------|----------|----------------|
-| Epic 1: iOS v1 Garden & Diagnostics | ✅ Complete (6/6) | All stories approved | P0 - MVP | v1.0 |
-| Epic 2: Pro Features & Analytics | ✅ Complete (6/6) | All stories approved | P0 - Monetization | v1.1 |
-| Epic 3: Device Integrations | 📋 Planned (0/8) | Needs story creation | P1 - Differentiation | v1.2-v1.3 |
-| Epic 4: Knowledge Base & Education | 📋 Planned (0/6) | Needs story creation | P1 - Engagement | v1.3-v1.4 |
-| Epic 5: App Intents & Siri | 📋 Planned (0/7) | Needs story creation | P2 - Polish | v1.4-v1.5 |
+| Epic 1: iOS v1 Garden & Diagnostics | ✅ Complete (6/6) | All approved | P0 - MVP | v1.0 |
+| Epic 2: Pro Features & Analytics | ✅ Complete (6/6) | All approved | P0 - Monetization | v1.1 |
+| Epic 3: Device Integrations | ✅ Complete (9/9) | All approved | P1 - Differentiation | v1.2-v1.3 |
+| Epic 4: Knowledge Base & Education | ✅ Complete (6/6) | All approved | P1 - Engagement | v1.3-v1.4 |
+| Epic 5: App Intents & Siri | ✅ Complete (7/7) | All approved | P2 - Polish | v1.4-v1.5 |
+| Epic 6: Smart Greenhouse UI | ✅ Complete (12/12) | All approved | P1 - Design | v1.2-v1.3 |
+| Epic 7: Onboarding & First-Time UX | ✅ Complete (7/7) | All approved | P1 - Activation | v1.0-v1.1 |
+| Epic 8: Nutrient Management | ✅ Complete (10/10) | All approved | P1 - Features | v1.3-v1.4 |
 
-**Total:** 5 epics, 33 stories (12 ready, 21 planned)
-
----
-
-## Epic 1: iOS v1 Garden & Diagnostics ✅
-
-**Goal:** Deliver first usable version with local-first plant diary, watering scheduler, and AI diagnostics.
-
-**Business Value:** Demonstrates core value proposition, establishes architecture foundation, enables TestFlight testing.
-
-### Stories (All Approved ✅)
-
-1. **1.1 App Shell and Persistence**
-   - Foundation: SwiftUI app, Core Data/SwiftData, persistence layer
-   - Critical path for all other stories
-
-2. **1.2 Plant Creation and Detail**
-   - CRUD operations for plants
-   - Plant detail screen with basic info display
-
-3. **1.3 Garden View and Navigation**
-   - Main garden list view
-   - Plant cards with status indicators
-   - Navigation to detail screens
-
-4. **2.1 Diary Events and Timeline**
-   - Event logging (watering, feeding, notes, photos, stress)
-   - Timeline visualization
-   - Event filtering and search
-
-5. **2.2 Watering Scheduler and Reminders**
-   - Adaptive watering interval calculation
-   - Local push notifications
-   - User feedback for interval adjustment
-
-6. **3.1 L1 Diagnostics and Debug Console**
-   - Photo-based plant health diagnostics (Core ML)
-   - AI debug console for troubleshooting
-   - Offline fallback mode
-
-**Completion Criteria:** User can track 1+ plants end-to-end with diagnostics, entirely offline.
+**Total:** 8 epics, **63 stories** (all approved and ready for development)
 
 ---
 
-## Epic 2: Pro Features & Analytics ✅
+## Epic Summaries
 
-**Goal:** Create compelling monetization model with Pro tier differentiation.
+### Epic 1: iOS v1 Garden & Diagnostics ✅
+**Goal:** MVP with local-first plant diary, watering scheduler, AI diagnostics.
+**Stories:** 6 (all approved)
+**Target:** v1.0
 
-**Business Value:** Establishes recurring revenue, targets committed growers, foundation for B2B features.
+### Epic 2: Pro Features & Analytics ✅
+**Goal:** Monetization via StoreKit 2, Pro tier with analytics, iCloud sync.
+**Stories:** 6 (all approved)
+**Target:** v1.1
 
-### Stories (All Approved ✅)
+### Epic 3: Device Integrations ✅
+**Goal:** Vivosun/AC Infinity controller integrations, environmental data, ARKit light assistant.
+**Stories:** 9 (all approved)
+- 7.1-7.3: Controller integrations and pairing
+- 8.1-8.3: Environmental features and alerts
+- 9.1-9.3: Light meter and assistant
 
-1. **4.1 Subscription Management and Pro Gating**
-   - StoreKit 2 integration
-   - Pro entitlement system
-   - Free tier plant limit (3 plants)
-   - Restore purchases and graceful degradation
+**Target:** v1.2-v1.3
 
-2. **4.2 Subscription UI and Upgrade Flow**
-   - "Upgrade to Pro" screen
-   - Contextual Pro feature prompts
-   - Subscription management in Settings
+### Epic 4: Knowledge Base & Education ✅
+**Goal:** In-app guides, educational content, safety/legal compliance.
+**Stories:** 6 (all approved)
+- 10.1-10.6: Content infrastructure, search, educational guides, safety content
 
-3. **5.1 Advanced Analytics Dashboard**
-   - Growth timeline visualization
-   - Watering frequency charts
-   - Event distribution graphs
-   - Stage duration analytics
+**Target:** v1.3-v1.4
 
-4. **5.2 Data Export Functionality**
-   - CSV and JSON export formats
-   - Scope filtering (single plant / all / date range)
-   - Privacy-conscious export with README
+### Epic 5: App Intents & Siri ✅
+**Goal:** Siri integration, Shortcuts, Spotlight search, widgets.
+**Stories:** 7 (all approved)
+- 11.1-11.4: Siri, Shortcuts, Spotlight
+- 12.1-12.3: Widgets (home screen, lock screen)
 
-5. **6.1 iCloud Sync Architecture**
-   - CloudKit integration
-   - Bidirectional sync across devices
-   - Background sync and offline queue
-   - Sync status indicators
+**Target:** v1.4-v1.5
 
-6. **6.2 Conflict Resolution and Offline Support**
-   - Intelligent conflict resolution
-   - "Last write wins" with timestamp
-   - Offline edit preservation
-   - Quota/rate limit handling
+### Epic 6: Smart Greenhouse UI Implementation ✅ **NEW**
+**Goal:** Complete Smart Greenhouse design system across entire app.
+**Stories:** 12 (all approved)
+- 13.1-13.6: Design system components and view styling
+- 14.1-14.6: Animations, accessibility, performance
 
-**Completion Criteria:** Pro users get unlimited plants, analytics, export, and iCloud sync.
+**Target:** v1.2-v1.3
 
----
+**Key Features:**
+- EnvironmentalWidget, DataVisualizationChart, MetricDisplay components
+- Glassmorphic styling applied to all views
+- Full WCAG 2.1 Level AA accessibility
+- 60fps animations and transitions
 
-## Epic 3: Device Integrations 📋
+### Epic 7: Onboarding & First-Time UX ✅ **NEW**
+**Goal:** Welcoming, educational onboarding experience.
+**Stories:** 7 (all approved)
+- 15.1-15.7: Welcome flow, guided creation, tooltips, legal disclaimers
 
-**Goal:** Integrate with grow controller hardware for automated environmental logging.
+**Target:** v1.0-v1.1
 
-**Business Value:** Differentiates from basic diary apps, appeals to serious growers, data foundation for AI recommendations.
+**Key Features:**
+- Glassmorphic welcome flow with feature highlights
+- Guided first plant creation with inline tips
+- Sample data/demo plant option
+- Contextual tooltips and feature discovery
+- Progress tracking and completion rewards
 
-### Planned Stories (8 total)
+### Epic 8: Nutrient Management & Feeding Charts ✅ **NEW**
+**Goal:** Comprehensive nutrient management with feeding schedules from leading brands.
+**Stories:** 10 (all approved)
+- 16.1-16.4: Nutrient calculator, feeding charts (GHE, Advanced Nutrients, Fox Farm, Canna, BioBizz)
+- 16.5-16.7: PPM/EC/TDS, pH tracking, nutrient logging
+- 16.8-16.10: Cost tracking (Pro), analytics (Pro), safety warnings
 
-**Controller Integrations:**
-- 7.1 Vivosun Integration and Data Sync
-- 7.2 AC Infinity Integration and Data Sync
-- 7.3 Device Pairing and Room Management
+**Target:** v1.3-v1.4
 
-**Environmental Features:**
-- 8.1 Environmental Data Timeline
-- 8.2 Environmental Analytics Dashboard
-- 8.3 Threshold Alerts and Notifications
-
-**Light Assistant:**
-- 9.1 Camera Light Distance Measurement (ARKit)
-- 9.2 Light Recommendations Engine
-
-**Completion Criteria:** Users can pair grow controllers, automatically log environmental data, and use AR-based light assistant.
-
----
-
-## Epic 4: Knowledge Base & Education 📋
-
-**Goal:** Provide safe, educational content positioning GroBro as trusted authority.
-
-**Business Value:** Increases engagement, reduces support burden, legal protection through disclaimers.
-
-### Planned Stories (6 total)
-
-**Content Infrastructure:**
-- 10.1 Guides Section and Content Delivery
-- 10.2 Search and Bookmarks
-
-**Educational Content:**
-- 10.3 Core Educational Content (writing guides)
-- 10.4 Context-Aware Tips System
-
-**Compliance:**
-- 10.5 Safety and Legal Content
-- 10.6 Content Moderation Guidelines
-
-**Completion Criteria:** Users can access curated guides, search content, get context-aware tips, and see clear legal/safety disclaimers.
-
----
-
-## Epic 5: App Intents & Siri Integration 📋
-
-**Goal:** Leverage iOS ecosystem for hands-free, low-friction interactions.
-
-**Business Value:** Improves convenience during hands-on tasks, showcases technical excellence, competitive differentiation.
-
-### Planned Stories (7 total)
-
-**App Intents:**
-- 11.1 App Intents Framework Integration
-- 11.2 Siri Voice Commands
-- 11.3 Shortcuts Suggested Actions
-- 11.4 Spotlight Search Integration
-
-**Widgets:**
-- 12.1 Home Screen Widgets
-- 12.2 Lock Screen Widgets
-- 12.3 Widget Configuration and Deep Linking
-
-**Completion Criteria:** Users can log actions via Siri, use Shortcuts, search in Spotlight, and view plant status via widgets.
+**Key Features:**
+- Nutrient dosage calculator for 6+ major brands
+- Pre-built feeding schedules (GHE, Advanced Nutrients, Fox Farm, Canna, BioBizz, etc.)
+- PPM/EC/TDS calculator and tracker
+- pH tracking with target range recommendations
+- Custom nutrient recipes
+- Nutrient cost tracking (Pro)
+- Deficiency correlation with diagnostics (Pro)
 
 ---
 
 ## Implementation Phases
 
-### Phase 1: MVP + Monetization (v1.0 - v1.1)
+### Phase 1: MVP + Monetization + Onboarding (v1.0 - v1.1)
 **Priority:** P0 - Critical Path
 **Timeline:** Immediate
 
-1. Complete Epic 1 (all 6 stories) - Foundation
-2. Complete Epic 2 (all 6 stories) - Monetization
-3. Launch TestFlight beta
-4. Submit to App Store
+**Epics:**
+1. Epic 1 (6 stories) - Foundation
+2. Epic 2 (6 stories) - Monetization
+3. Epic 7 (7 stories) - Onboarding
+
+**Deliverables:**
+- Complete plant diary with watering, diagnostics, timeline
+- Pro subscription with analytics, export, iCloud sync
+- Welcoming onboarding flow
+- TestFlight beta → App Store submission
 
 **Success Metrics:**
-- 100% of Epic 1 & 2 stories complete
+- 100% of Phase 1 stories complete
+- <30% churn in first 7 days (onboarding goal)
+- 5%+ Free → Pro conversion within 30 days
 - TestFlight with 20+ testers
-- App Store submission ready
 
-### Phase 2: Advanced Features (v1.2 - v1.3)
+### Phase 2: Design + Integrations + Nutrients (v1.2 - v1.3)
 **Priority:** P1 - Differentiation
 **Timeline:** Post-launch + 3 months
 
-1. Create and implement Epic 3 stories (Device Integrations)
-2. Begin Epic 4 stories (Knowledge Base)
+**Epics:**
+1. Epic 6 (12 stories) - Smart Greenhouse UI
+2. Epic 3 (9 stories) - Device Integrations
+3. Epic 8 (10 stories) - Nutrient Management
+
+**Deliverables:**
+- Complete Smart Greenhouse design system applied
+- Vivosun and AC Infinity integrations live
+- Environmental analytics and alerts
+- Comprehensive nutrient management
+- Feeding charts from 6+ major brands
 
 **Success Metrics:**
-- Vivosun and AC Infinity integrations live
-- Environmental analytics available
-- At least 10 educational guides published
+- 10%+ users connect controllers
+- Full WCAG 2.1 Level AA compliance
+- 60fps performance across app
+- Nutrient tracking adopted by 20%+ users
 
-### Phase 3: Polish & Ecosystem (v1.4 - v1.5)
-**Priority:** P2 - Polish
+### Phase 3: Polish & Ecosystem + Education (v1.4 - v1.5)
+**Priority:** P2 - Polish & Engagement
 **Timeline:** Post-launch + 6 months
 
-1. Complete Epic 4 stories (Knowledge Base)
-2. Complete Epic 5 stories (Siri & Widgets)
+**Epics:**
+1. Epic 4 (6 stories) - Knowledge Base
+2. Epic 5 (7 stories) - Siri & Widgets
+
+**Deliverables:**
+- Complete knowledge base with search
+- 15+ educational guides published
+- Siri voice commands functional
+- Home and lock screen widgets
+- Shortcuts integration
 
 **Success Metrics:**
-- Siri voice commands functional
-- Home and lock screen widgets available
-- Full knowledge base with search
+- 30%+ users read at least 1 guide
+- 15%+ users interact via Siri/widgets
+- 5%+ users create custom Shortcuts
 
 ---
 
 ## Current Status & Next Steps
 
 ### ✅ Completed
-- All Epic 1 stories created and approved (6/6)
-- All Epic 2 stories created and approved (6/6)
-- All epics defined with clear business value and scope
+- All 8 epics defined with clear business value
+- All 63 stories created and approved
+- Smart Greenhouse design spec completed
+- Epic 1 & 2 implementation in progress
 
 ### 🚧 In Progress
-- Story 3.1 (Diagnostics and Debug Console) - nearing completion
+- Epic 1 stories (MVP features)
+- Epic 2 stories (Pro features)
+- Design system initial implementation (Garden view)
 
 ### 📋 Immediate Next Steps
-1. **Complete Story 3.1** - finish diagnostics implementation
-2. **Begin Epic 2 implementation** - prioritize subscription system (4.1, 4.2)
-3. **Create remaining stories** for Epics 3-5 (21 stories)
-4. **TestFlight preparation** - beta testing infrastructure
+1. **Complete Phase 1** - Epic 1, 2, 7 (MVP + Monetization + Onboarding)
+2. **TestFlight beta testing**
+3. **App Store submission**
+4. **Begin Phase 2** - Epic 6, 3, 8 (Design + Integrations + Nutrients)
 
-### 🎯 Definition of "Ready for Dev"
-All Epic 1 and Epic 2 stories are marked **Approved** and ready for development:
-- Acceptance criteria defined
-- Tasks and subtasks identified
-- Dev notes include architecture context
-- Testing approach documented
+---
+
+## Success Metrics (KPIs)
+
+### Phase 1 (MVP + Monetization + Onboarding)
+- User retention: 40%+ D7 retention
+- Onboarding completion: 70%+ complete first plant creation
+- Engagement: 3+ diary entries per week per active user
+- Conversion: 5%+ Free → Pro within 30 days
+- Feature adoption: 60%+ try diagnostics in first week
+
+### Phase 2 (Design + Integrations + Nutrients)
+- Device integration: 10%+ connect controllers
+- Nutrient tracking: 20%+ use nutrient calculator
+- Design quality: Zero accessibility violations
+- Performance: 60fps charts, <1.5s app launch
+
+### Phase 3 (Polish + Education)
+- Educational engagement: 30%+ read at least 1 guide
+- Voice/widget usage: 15%+ interact via Siri or widgets
+- Shortcuts creation: 5%+ create custom Shortcuts
 
 ---
 
 ## Dependencies & Risks
 
 ### Technical Dependencies
-- ✅ iOS 18.0+ deployment target (confirmed)
-- ✅ Swift 6.1+ and SwiftUI (confirmed)
-- ✅ SwiftData for persistence (confirmed in CLAUDE.md)
-- ⚠️ Core ML model for diagnostics (placeholder acceptable for v1)
-- ⚠️ LLM API for debug console (stub acceptable for v1)
-
-### External Dependencies
-- StoreKit 2 for subscriptions (native, no risk)
-- CloudKit for sync (native, minor risk around quota limits)
-- Vivosun API (requires partnership/API access)
-- AC Infinity API (requires partnership/API access)
+- ✅ iOS 18.0+ deployment target
+- ✅ Swift 6.1+ and SwiftUI
+- ✅ SwiftData for persistence
+- ⚠️ AC Infinity API (unofficial, needs partnership)
+- ⚠️ Vivosun API (research needed)
 
 ### Key Risks
-1. **Legal/Compliance** - Cannabis legality varies by jurisdiction
-   - Mitigation: Strong disclaimers, no cultivation instructions, user responsibility
-2. **AI Safety** - Diagnostic accuracy and liability
-   - Mitigation: Soft language, hypothesis-based (not diagnostic), clear disclaimers
-3. **Device Integration** - API availability and stability
-   - Mitigation: Read-only integrations, graceful degradation, manual logging fallback
-4. **Monetization** - Pro tier perceived value
-   - Mitigation: Clear differentiation, free tier valuable on its own, generous trial
-
----
-
-## Success Metrics (KPIs)
-
-### Epic 1 (MVP) Metrics
-- User retention: 40%+ D7 retention
-- Engagement: 3+ diary entries per week per active user
-- Feature adoption: 60%+ users try diagnostics within first week
-
-### Epic 2 (Monetization) Metrics
-- Conversion: 5%+ Free → Pro conversion within 30 days
-- Revenue: $X MRR target (define based on business goals)
-- Export usage: 20%+ of Pro users export data monthly
-
-### Epic 3-5 (Growth) Metrics
-- Device integration: 10%+ of users connect controllers
-- Educational engagement: 30%+ users read at least 1 guide
-- Voice/widget usage: 15%+ users interact via Siri or widgets
+1. **Legal/Compliance** - Cannabis legality varies
+   - Mitigation: Strong disclaimers, hypothesis-based guidance, user responsibility
+2. **Device API Availability** - Unofficial APIs may break
+   - Mitigation: Read-only, graceful degradation, manual logging fallback
+3. **Monetization** - Pro tier perceived value
+   - Mitigation: Clear differentiation, valuable free tier, generous features
 
 ---
 
@@ -294,7 +238,8 @@ All Epic 1 and Epic 2 stories are marked **Approved** and ready for development:
 
 | Date       | Version | Changes | Author |
 |------------|---------|---------|--------|
-| 2025-11-14 | 1.0     | Initial roadmap with 5 epics, 33 stories | Sarah (PO) |
+| 2025-11-14 | 1.0     | Initial roadmap with 5 epics | Sarah (PO) |
+| 2025-11-15 | 2.0     | Added Epic 6 (Smart Greenhouse UI), Epic 7 (Onboarding), Epic 8 (Nutrient Management). Total: 8 epics, 63 stories | Mary (BA) |
 
 ---
 
