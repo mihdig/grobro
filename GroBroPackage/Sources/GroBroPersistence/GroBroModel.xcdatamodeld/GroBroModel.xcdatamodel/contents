@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22758" systemVersion="23E224" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="EventEntity" representedClassName="EventEntity" syncable="YES">
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="noteText" optional="YES" attributeType="String"/>
+        <attribute name="nutrientProfileId" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="photoAssetId" optional="YES" attributeType="String"/>
+        <attribute name="plantId" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="stressTags" optional="YES" attributeType="String"/>
+        <attribute name="timestamp" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="type" attributeType="String"/>
+        <attribute name="volumeLiters" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="metadataJSON" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="PlantEntity" representedClassName="PlantEntity" syncable="YES">
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="isArchived" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="lightHoursPerDay" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="notes" optional="YES" attributeType="String"/>
+        <attribute name="photoAssetId" optional="YES" attributeType="String"/>
+        <attribute name="potSizeLiters" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="stage" attributeType="String"/>
+        <attribute name="startDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="strainName" optional="YES" attributeType="String"/>
+        <attribute name="substrateType" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="EventEntity" positionX="0" positionY="0" width="128" height="164"/>
+        <element name="PlantEntity" positionX="0" positionY="0" width="128" height="209"/>
+    </elements>
+</model>
