@@ -52,7 +52,7 @@ public struct LightMeterView: View {
             Spacer()
         }
         .navigationTitle("Light Meter")
-        .navigationBarTitleDisplayMode(.inline)
+        .inlineNavigationTitle()
     }
 
     private var measurementSection: some View {
@@ -111,7 +111,7 @@ public struct LightMeterView: View {
                     .padding()
             }
         }
-        .background(Color(.systemBackground))
+        .background(.background)
         .clipShape(RoundedRectangle(cornerRadius: 16))
         .shadow(color: .black.opacity(0.05), radius: 4, y: 2)
         .padding(.horizontal)
@@ -155,7 +155,7 @@ public struct LightMeterView: View {
             .disabled(viewModel.currentMeasurement == nil)
         }
         .padding()
-        .background(Color(.systemBackground))
+        .background(.background)
         .clipShape(RoundedRectangle(cornerRadius: 16))
         .shadow(color: .black.opacity(0.05), radius: 4, y: 2)
         .padding(.horizontal)

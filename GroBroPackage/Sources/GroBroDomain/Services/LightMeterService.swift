@@ -28,6 +28,12 @@ public struct LightMeterService {
             calibration = 12_000
         case .hps:
             calibration = 10_000
+        case .mh:
+            calibration = 10_500
+        case .cfl:
+            calibration = 9_000
+        case .cmh:
+            calibration = 11_500
         case .sunlight:
             calibration = 20_000
         case .whiteLED:
@@ -97,6 +103,8 @@ public struct LightMeterService {
             return 400...600
         case .flowering:
             return 600...1_000
+        case .drying, .curing:
+            return 0...0
         }
     }
 }
