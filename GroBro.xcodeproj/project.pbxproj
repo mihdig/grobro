@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		8B41F6832DEDD23B001A66F9 /* GroBroFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 8B41F6822DEDD23B001A66F9 /* GroBroFeature */; };
 		8B41F6852DEDD25C001A66F9 /* GroBroFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 8B41F6842DEDD25C001A66F9 /* GroBroFeature */; };
+		8BF54A132F0D93F000DB7F55 /* GroBroDomain in Frameworks */ = {isa = PBXBuildFile; productRef = 8BF54A122F0D93F000DB7F55 /* GroBroDomain */; };
+		8BF54A142F0D93F000DB7F55 /* GroBroWidgets.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8BF54A022F0D93F000DB7F55 /* GroBroWidgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -21,9 +23,24 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		8BF54A112F0D93F000DB7F55 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				8BF54A142F0D93F000DB7F55 /* GroBroWidgets.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		8B41F6452DEDD0D5001A66F9 /* GroBro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroBro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B41F65C2DEDD0D6001A66F9 /* GroBro.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GroBro.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8BF54A022F0D93F000DB7F55 /* GroBroWidgets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = GroBroWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -36,6 +53,13 @@
 				Tests.xcconfig,
 			);
 			target = 8B41F6442DEDD0D5001A66F9 /* GroBro */;
+		};
+		8BF54A182F0D940000DB7F55 /* Exceptions for "GroBroWidgets" folder in "GroBroWidgets" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 8BF54A012F0D93F000DB7F55 /* GroBroWidgets */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -58,6 +82,14 @@
 			path = Config;
 			sourceTree = "<group>";
 		};
+		8BF54A002F0D93F000DB7F55 /* GroBroWidgets */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				8BF54A182F0D940000DB7F55 /* Exceptions for "GroBroWidgets" folder in "GroBroWidgets" target */,
+			);
+			path = GroBroWidgets;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +109,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8BF54A032F0D93F000DB7F55 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8BF54A132F0D93F000DB7F55 /* GroBroDomain in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -86,6 +126,7 @@
 				8BD71C052DEE41D800CEDD92 /* Config */,
 				8B41F6472DEDD0D5001A66F9 /* GroBro */,
 				8B41F65F2DEDD0D6001A66F9 /* GroBroUITests */,
+				8BF54A002F0D93F000DB7F55 /* GroBroWidgets */,
 				8B41F6812DEDD23B001A66F9 /* Frameworks */,
 				8B41F6462DEDD0D5001A66F9 /* Products */,
 			);
@@ -96,6 +137,7 @@
 			children = (
 				8B41F6452DEDD0D5001A66F9 /* GroBro.app */,
 				8B41F65C2DEDD0D6001A66F9 /* GroBro.xctest */,
+				8BF54A022F0D93F000DB7F55 /* GroBroWidgets.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -117,6 +159,7 @@
 				8B41F6412DEDD0D5001A66F9 /* Sources */,
 				8B41F6422DEDD0D5001A66F9 /* Frameworks */,
 				8B41F6432DEDD0D5001A66F9 /* Resources */,
+				8BF54A112F0D93F000DB7F55 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -158,6 +201,29 @@
 			productReference = 8B41F65C2DEDD0D6001A66F9 /* GroBro.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		8BF54A012F0D93F000DB7F55 /* GroBroWidgets */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8BF54A152F0D93F000DB7F55 /* Build configuration list for PBXNativeTarget "GroBroWidgets" */;
+			buildPhases = (
+				8BF54A042F0D93F000DB7F55 /* Sources */,
+				8BF54A032F0D93F000DB7F55 /* Frameworks */,
+				8BF54A052F0D93F000DB7F55 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				8BF54A002F0D93F000DB7F55 /* GroBroWidgets */,
+			);
+			name = GroBroWidgets;
+			packageProductDependencies = (
+				8BF54A122F0D93F000DB7F55 /* GroBroDomain */,
+			);
+			productName = GroBroWidgets;
+			productReference = 8BF54A022F0D93F000DB7F55 /* GroBroWidgets.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -175,6 +241,9 @@
 						CreatedOnToolsVersion = 16.3;
 						TestTargetID = 8B41F6442DEDD0D5001A66F9;
 					};
+					8BF54A012F0D93F000DB7F55 = {
+						CreatedOnToolsVersion = 16.3;
+					};
 				};
 			};
 			buildConfigurationList = 8B41F6402DEDD0D5001A66F9 /* Build configuration list for PBXProject "GroBro" */;
@@ -186,6 +255,9 @@
 			);
 			mainGroup = 8B41F63C2DEDD0D5001A66F9;
 			minimizedProjectReferenceProxies = 1;
+		packageReferences = (
+			8B41F6802DEDD1F0001A66F9 /* XCLocalSwiftPackageReference "GroBroPackage" */,
+		);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 8B41F6462DEDD0D5001A66F9 /* Products */;
 			projectDirPath = "";
@@ -193,6 +265,7 @@
 			targets = (
 				8B41F6442DEDD0D5001A66F9 /* GroBro */,
 				8B41F65B2DEDD0D6001A66F9 /* GroBroUITests */,
+				8BF54A012F0D93F000DB7F55 /* GroBroWidgets */,
 			);
 		};
 /* End PBXProject section */
@@ -212,6 +285,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8BF54A052F0D93F000DB7F55 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -223,6 +303,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		8B41F6582DEDD0D6001A66F9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8BF54A042F0D93F000DB7F55 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -369,6 +456,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4FQV626DJY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "$(PRODUCT_DISPLAY_NAME)";
@@ -392,6 +480,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4FQV626DJY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "$(PRODUCT_DISPLAY_NAME)";
@@ -413,7 +502,10 @@
 			baseConfigurationReferenceRelativePath = Tests.xcconfig;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4FQV626DJY;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = portrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -427,11 +519,68 @@
 			baseConfigurationReferenceRelativePath = Tests.xcconfig;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4FQV626DJY;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = portrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = GroBro;
+			};
+			name = Release;
+		};
+		8BF54A162F0D93F000DB7F55 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 8BD71C052DEE41D800CEDD92 /* Config */;
+			baseConfigurationReferenceRelativePath = Debug.xcconfig;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = Config/GroBroWidgets.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4FQV626DJY;
+				INFOPLIST_FILE = GroBroWidgets/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "GroBro Widgets";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pokrasote.grobro.widgets;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = portrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8BF54A172F0D93F000DB7F55 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 8BD71C052DEE41D800CEDD92 /* Config */;
+			baseConfigurationReferenceRelativePath = Release.xcconfig;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = Config/GroBroWidgets.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4FQV626DJY;
+				INFOPLIST_FILE = GroBroWidgets/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "GroBro Widgets";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pokrasote.grobro.widgets;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = portrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -465,16 +614,39 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		8BF54A152F0D93F000DB7F55 /* Build configuration list for PBXNativeTarget "GroBroWidgets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8BF54A162F0D93F000DB7F55 /* Debug */,
+				8BF54A172F0D93F000DB7F55 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		8B41F6802DEDD1F0001A66F9 /* XCLocalSwiftPackageReference "GroBroPackage" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = GroBroPackage;
+		};
+/* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
 		8B41F6822DEDD23B001A66F9 /* GroBroFeature */ = {
 			isa = XCSwiftPackageProductDependency;
+			package = 8B41F6802DEDD1F0001A66F9 /* XCLocalSwiftPackageReference "GroBroPackage" */;
 			productName = GroBroFeature;
 		};
 		8B41F6842DEDD25C001A66F9 /* GroBroFeature */ = {
 			isa = XCSwiftPackageProductDependency;
+			package = 8B41F6802DEDD1F0001A66F9 /* XCLocalSwiftPackageReference "GroBroPackage" */;
 			productName = GroBroFeature;
+		};
+		8BF54A122F0D93F000DB7F55 /* GroBroDomain */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8B41F6802DEDD1F0001A66F9 /* XCLocalSwiftPackageReference "GroBroPackage" */;
+			productName = GroBroDomain;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
