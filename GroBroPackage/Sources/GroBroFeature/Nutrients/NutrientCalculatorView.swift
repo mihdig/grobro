@@ -2,7 +2,7 @@ import SwiftUI
 import GroBroDomain
 
 /// Nutrient dosage calculator with Smart Greenhouse design
-@available(iOS 18.0, *)
+@available(iOS 18.0, macOS 15.0, *)
 public struct NutrientCalculatorView: View {
 
     @State private var selectedBrand: NutrientBrand = .generalHydroponics
@@ -425,7 +425,7 @@ public struct NutrientCalculatorView: View {
 // MARK: - Preview
 
 #if DEBUG
-@available(iOS 18.0, *)
+@available(iOS 18.0, macOS 15.0, *)
 #Preview {
     NavigationStack {
         NutrientCalculatorView()

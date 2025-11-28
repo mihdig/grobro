@@ -75,6 +75,10 @@ struct StageDurationChart: View {
             return .blue
         case .flowering:
             return .purple
+        case .drying:
+            return .orange
+        case .curing:
+            return .brown
         }
     }
 }
@@ -104,7 +108,7 @@ struct StageDurationChart: View {
         )
     ]
 
-    if #available(iOS 18.0, *) {
+    if #available(iOS 18.0, macOS 15.0, *) {
         ScrollView {
             StageDurationChart(data: data)
                 .padding()

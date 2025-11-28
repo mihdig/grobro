@@ -43,7 +43,7 @@ public struct UpgradeToProView: View {
                     successOverlay
                 }
             }
-            .navigationBarTitleDisplayMode(.inline)
+            .inlineNavigationTitle()
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Close") {
@@ -197,8 +197,12 @@ public struct UpgradeToProView: View {
                 .disabled(viewModel.isLoading)
 
             } else if viewModel.isLoading {
-                ProgressView("Loading subscription options...")
-                    .frame(height: 56)
+                GlassLoadingIndicator(
+                    title: "Loading subscription options...",
+                    subtitle: "Contacting the App Store",
+                    style: .fullWidth
+                )
+                .frame(height: 56)
             } else {
                 // Error state
                 VStack(spacing: 12) {
@@ -246,7 +250,7 @@ public struct UpgradeToProView: View {
                 .font(.system(size: 100))
                 .foregroundStyle(.green)
                 .scaleEffect(showSuccessAnimation ? 1 : 0)
-                .animation(.spring(response: 0.5, dampingFraction: 0.6), value: showSuccessAnimation)
+                .motionSensitiveAnimation(SmartGreenhouseAnimations.cardPop, value: showSuccessAnimation)
 
             Text("Welcome to Pro!")
                 .font(.largeTitle)

@@ -40,7 +40,19 @@ public struct AnalyticsView: View {
     @ViewBuilder
     private var analyticsContent: some View {
         if viewModel.isLoading {
-            ProgressView("Loading analytics...")
+            ScrollView {
+                VStack(spacing: 16) {
+                    GlassLoadingIndicator(
+                        title: "Loading analytics",
+                        subtitle: "Fetching growth, events, and trends...",
+                        style: .fullWidth
+                    )
+
+                    GlassSkeletonCard(lineCount: 3, showsIcon: true)
+                    GlassSkeletonCard(lineCount: 4, showsIcon: true)
+                }
+                .padding()
+            }
         } else if viewModel.hasInsufficientData {
             emptyStateView
         } else if let error = viewModel.errorMessage {
@@ -363,7 +375,7 @@ import GroBroPersistence
 #endif
 
 #Preview {
-    if #available(iOS 18.0, *) {
+    if #available(iOS 18.0, macOS 15.0, *) {
         NavigationStack {
             AnalyticsView(
                 plant: Plant(

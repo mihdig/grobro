@@ -125,6 +125,10 @@ struct GrowthTimelineChart: View {
             return .blue
         case .flowering:
             return .purple
+        case .drying:
+            return .orange
+        case .curing:
+            return .brown
         }
     }
 }
@@ -148,7 +152,7 @@ struct GrowthTimelineChart: View {
         ]
     )
 
-    if #available(iOS 18.0, *) {
+    if #available(iOS 18.0, macOS 15.0, *) {
         ScrollView {
             GrowthTimelineChart(data: data)
                 .padding()

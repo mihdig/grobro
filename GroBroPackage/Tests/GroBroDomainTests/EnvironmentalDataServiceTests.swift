@@ -9,11 +9,10 @@ struct EnvironmentalDataServiceTests {
     let eventStore: EventStore
     let service: EnvironmentalDataService
 
-    init() async throws {
-        // Create in-memory Core Data stack for testing
-        let controller = try PersistenceController.inMemory()
-        self.plantStore = PlantStore(context: controller.context)
-        self.eventStore = EventStore(context: controller.context)
+    init() {
+        // Use preview/in-memory stores for testing
+        self.plantStore = PlantStore()
+        self.eventStore = EventStore()
         self.service = EnvironmentalDataService(eventStore: eventStore)
     }
 

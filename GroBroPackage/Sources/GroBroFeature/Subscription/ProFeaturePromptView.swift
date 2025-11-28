@@ -8,6 +8,7 @@ public struct ProFeaturePromptView: View {
 
     @Environment(ProEntitlementManager.self) private var proManager
     @Environment(PromptDismissalTracker.self) private var dismissalTracker
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     let promptType: ProPromptType
     let onUpgrade: () -> Void
@@ -40,7 +41,7 @@ public struct ProFeaturePromptView: View {
                     }
             }
         }
-        .animation(.easeInOut, value: isVisible)
+        .motionSensitiveAnimation(SmartGreenhouseAnimations.quickFade, value: isVisible)
     }
 
     // MARK: - Prompt Content
@@ -81,7 +82,7 @@ public struct ProFeaturePromptView: View {
                         .font(.caption)
                         .foregroundStyle(.secondary)
                         .padding(6)
-                        .background(Circle().fill(Color(.systemGray5)))
+                        .background(Circle().fill(Color.gray.opacity(0.2)))
                 }
                 .buttonStyle(.plain)
             }
@@ -116,9 +117,14 @@ public struct ProFeaturePromptView: View {
         dismissalTracker.recordDismissal(for: promptType)
 
         // Hide with animation
-        withAnimation {
+        if reduceMotion {
             isDismissed = true
             isVisible = false
+        } else {
+            withAnimation(SmartGreenhouseAnimations.quickFade) {
+                isDismissed = true
+                isVisible = false
+            }
         }
     }
 }
@@ -131,6 +137,7 @@ public struct ProFeatureInlinePrompt: View {
 
     @Environment(ProEntitlementManager.self) private var proManager
     @Environment(PromptDismissalTracker.self) private var dismissalTracker
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     let promptType: ProPromptType
     let onUpgrade: () -> Void
@@ -197,7 +204,7 @@ public struct ProFeatureInlinePrompt: View {
                 .transition(.scale.combined(with: .opacity))
             }
         }
-        .animation(.easeInOut, value: isVisible)
+        .motionSensitiveAnimation(SmartGreenhouseAnimations.quickFade, value: isVisible)
         .onAppear {
             if !dismissalTracker.shouldShowPrompt(for: promptType) {
                 isVisible = false
@@ -207,8 +214,12 @@ public struct ProFeatureInlinePrompt: View {
 
     private func handleDismiss() {
         dismissalTracker.recordDismissal(for: promptType)
-        withAnimation {
+        if reduceMotion {
             isVisible = false
+        } else {
+            withAnimation(SmartGreenhouseAnimations.quickFade) {
+                isVisible = false
+            }
         }
     }
 }
@@ -221,6 +232,7 @@ public struct ProFeatureBanner: View {
 
     @Environment(ProEntitlementManager.self) private var proManager
     @Environment(PromptDismissalTracker.self) private var dismissalTracker
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     let promptType: ProPromptType
     let onUpgrade: () -> Void
@@ -273,7 +285,7 @@ public struct ProFeatureBanner: View {
                 .transition(.move(edge: .top).combined(with: .opacity))
             }
         }
-        .animation(.spring(response: 0.4, dampingFraction: 0.8), value: isVisible)
+        .motionSensitiveAnimation(SmartGreenhouseAnimations.sheetSlide, value: isVisible)
         .onAppear {
             if !dismissalTracker.shouldShowPrompt(for: promptType) {
                 isVisible = false
@@ -283,8 +295,12 @@ public struct ProFeatureBanner: View {
 
     private func handleDismiss() {
         dismissalTracker.recordDismissal(for: promptType)
-        withAnimation {
+        if reduceMotion {
             isVisible = false
+        } else {
+            withAnimation(SmartGreenhouseAnimations.sheetSlide) {
+                isVisible = false
+            }
         }
     }
 }

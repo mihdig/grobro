@@ -127,7 +127,7 @@ struct EnvironmentTabView: View {
                 Image(systemName: device.signalStrength.iconName)
                     .font(.system(size: 24))
                     .foregroundColor(device.isConnected ? .electricGreen : .tertiaryText)
-                    .symbolEffect(.pulse, isActive: device.isConnected)
+                    .motionSensitiveSymbolEffect(.pulse, isActive: device.isConnected)
 
                 VStack(alignment: .leading, spacing: 4) {
                     Text(device.name)
@@ -167,6 +167,13 @@ struct EnvironmentTabView: View {
                 Spacer()
             }
         }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("Controller connection status")
+        .accessibilityValue(
+            device.isConnected
+                ? "Connected, signal \(device.signalStrength.rawValue)"
+                : "Offline"
+        )
     }
 
     private var metricsGrid: some View {
@@ -214,12 +221,15 @@ struct EnvironmentTabView: View {
                     .font(.system(size: 32, weight: .semibold, design: .monospaced))
                     .foregroundColor(.primaryText)
                     .contentTransition(.numericText())
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.7)
 
                 Text(label)
                     .font(.system(size: 13, weight: .medium))
                     .foregroundColor(.tertiaryText)
                     .textCase(.uppercase)
                     .tracking(0.5)
+                    .lineLimit(1)
 
                 // Progress bar
                 GeometryReader { geometry in
@@ -267,6 +277,8 @@ struct EnvironmentTabView: View {
                         .font(.system(size: 48, weight: .semibold, design: .monospaced))
                         .foregroundColor(.vpdColor(for: environmentalData.vpd))
                         .contentTransition(.numericText())
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.6)
 
                     Text("kPa")
                         .font(.system(size: 20, weight: .medium))
@@ -284,6 +296,13 @@ struct EnvironmentTabView: View {
                     .foregroundColor(.secondaryText)
             }
         }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("Vapor pressure deficit")
+        .accessibilityValue(
+            "\(String(format: "%.2f", environmentalData.vpd)) kilopascals, " +
+            "\(environmentalData.status.rawValue) status"
+        )
+        .accessibilityHint("Shows how close conditions are to the ideal V P D range")
     }
 
     private var statusBadge: some View {
@@ -295,6 +314,7 @@ struct EnvironmentTabView: View {
             Text(environmentalData.status.rawValue)
                 .font(.system(size: 13, weight: .medium))
                 .foregroundColor(environmentalData.status.color)
+                .lineLimit(1)
         }
         .padding(.horizontal, 12)
         .padding(.vertical, 6)
@@ -357,14 +377,11 @@ struct EnvironmentTabView: View {
     }
 
     private var loadingChartPlaceholder: some View {
-        VStack(spacing: 12) {
-            ProgressView()
-                .progressViewStyle(CircularProgressViewStyle(tint: .electricGreen))
-
-            Text("Loading historical data…")
-                .font(.system(size: 14))
-                .foregroundColor(.secondaryText)
-        }
+        GlassLoadingIndicator(
+            title: "Loading historical data…",
+            subtitle: "Fetching temperature and humidity history",
+            style: .fullWidth
+        )
         .frame(maxWidth: .infinity)
         .padding(.vertical, 32)
     }
@@ -798,7 +815,7 @@ struct AlertConfigurationView: View {
                 }
             }
             .navigationTitle("Alert Configuration")
-            .navigationBarTitleDisplayMode(.inline)
+            .inlineNavigationTitle()
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") {

@@ -25,7 +25,7 @@ public struct DebugConsoleView: View {
             }
             .padding(.horizontal)
             .padding(.vertical, 8)
-            .background(Color(.secondarySystemBackground))
+            .background(Color.gray.opacity(0.1))
 
             Divider()
 
@@ -87,10 +87,10 @@ public struct DebugConsoleView: View {
                 .disabled(!viewModel.canSend)
             }
             .padding()
-            .background(Color(.systemBackground))
+            .background(.background)
         }
         .navigationTitle("Debug Console")
-        .navigationBarTitleDisplayMode(.inline)
+        .inlineNavigationTitle()
     }
 
     private var emptyStateView: some View {
@@ -129,7 +129,7 @@ public struct DebugConsoleView: View {
                 }
             }
             .padding()
-            .background(Color(.secondarySystemBackground))
+            .background(Color.gray.opacity(0.1))
             .cornerRadius(10)
         }
         .padding(.vertical, 40)
@@ -150,7 +150,7 @@ struct MessageBubble: View {
                 Text(message.content)
                     .font(.body)
                     .padding(12)
-                    .background(message.isUserMessage ? Color.blue : Color(.secondarySystemBackground))
+                    .background(message.isUserMessage ? Color.blue : Color.gray.opacity(0.1))
                     .foregroundColor(message.isUserMessage ? .white : .primary)
                     .cornerRadius(16)
 

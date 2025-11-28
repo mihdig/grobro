@@ -28,7 +28,7 @@ public struct DiaryView: View {
                 .padding(.horizontal)
                 .padding(.vertical, 8)
             }
-            .background(Color(.systemGroupedBackground))
+            .background(.background)
 
             // Events list
             if viewModel.filteredEvents.isEmpty {
@@ -73,7 +73,7 @@ public struct DiaryView: View {
             )
         }
         .sheet(isPresented: $showingNutrientEventCreation) {
-            if #available(iOS 18.0, *) {
+            if #available(iOS 18.0, macOS 15.0, *) {
                 NutrientEventCreationView(
                     plantId: viewModel.plantId,
                     eventStore: viewModel.eventStore
@@ -114,7 +114,11 @@ struct FilterButton: View {
                 .font(.caption)
                 .padding(.horizontal, 12)
                 .padding(.vertical, 6)
+                #if os(iOS)
                 .background(isSelected ? Color.accentColor : Color(.secondarySystemGroupedBackground))
+                #else
+                .background(isSelected ? Color.accentColor : Color.gray.opacity(0.2))
+                #endif
                 .foregroundColor(isSelected ? .white : .primary)
                 .cornerRadius(16)
         }

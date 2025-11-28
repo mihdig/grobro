@@ -23,7 +23,7 @@ public struct EventCreationView: View {
                     Section("Volume") {
                         HStack {
                             TextField("Amount (Liters)", value: $viewModel.volumeLiters, format: .number)
-                                .keyboardType(.decimalPad)
+                                .decimalKeyboard()
                         }
                     }
                 }
@@ -52,7 +52,7 @@ public struct EventCreationView: View {
                 }
             }
             .navigationTitle("Add \(viewModel.eventType.displayName)")
-            .navigationBarTitleDisplayMode(.inline)
+            .inlineNavigationTitle()
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") {

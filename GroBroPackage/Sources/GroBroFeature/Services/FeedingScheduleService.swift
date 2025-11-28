@@ -11,6 +11,13 @@ public final class FeedingScheduleService {
 
     public init() {}
 
+    /// For testing only - sets schedules directly
+    #if DEBUG
+    public func setSchedulesForTesting(_ schedules: [FeedingSchedule]) {
+        self.schedules = schedules
+    }
+    #endif
+
     /// Load all feeding schedules from bundled JSON files
     public func loadSchedules() async {
         isLoading = true

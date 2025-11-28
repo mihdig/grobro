@@ -71,7 +71,7 @@ struct WateringFrequencyChart: View {
         )
     }.reversed()
 
-    if #available(iOS 18.0, *) {
+    if #available(iOS 18.0, macOS 15.0, *) {
         ScrollView {
             WateringFrequencyChart(dataPoints: Array(dataPoints))
                 .padding()

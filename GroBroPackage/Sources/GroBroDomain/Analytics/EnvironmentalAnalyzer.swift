@@ -82,6 +82,8 @@ public final class EnvironmentalAnalyzer {
         case .seedling: return 70...80
         case .vegetative: return 70...85
         case .flowering: return 65...80
+        case .drying: return 60...70
+        case .curing: return 60...70
         }
     }
 
@@ -90,6 +92,8 @@ public final class EnvironmentalAnalyzer {
         case .seedling: return 65...75
         case .vegetative: return 50...70
         case .flowering: return 40...55
+        case .drying: return 45...55
+        case .curing: return 58...65
         }
     }
 
@@ -98,6 +102,8 @@ public final class EnvironmentalAnalyzer {
         case .seedling: return 0.4...0.8
         case .vegetative: return 0.8...1.2
         case .flowering: return 1.0...1.5
+        case .drying: return 0.8...1.2
+        case .curing: return 0.6...1.0
         }
     }
 }

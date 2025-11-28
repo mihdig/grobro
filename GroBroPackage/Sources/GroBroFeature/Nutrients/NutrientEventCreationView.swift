@@ -2,7 +2,7 @@ import SwiftUI
 import GroBroDomain
 
 /// View for creating a feeding event with full nutrient calculator
-@available(iOS 18.0, *)
+@available(iOS 18.0, macOS 15.0, *)
 public struct NutrientEventCreationView: View {
 
     @Environment(\.dismiss) private var dismiss
@@ -96,7 +96,7 @@ public struct NutrientEventCreationView: View {
             .background(Color.deepBackground)
             .navigationTitle("Log Feeding")
             #if os(iOS)
-            .navigationBarTitleDisplayMode(.inline)
+            .inlineNavigationTitle()
             #endif
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
@@ -498,7 +498,7 @@ public struct NutrientEventCreationView: View {
 // MARK: - Preview
 
 #if DEBUG
-@available(iOS 18.0, *)
+@available(iOS 18.0, macOS 15.0, *)
 #Preview {
     NutrientEventCreationView(
         plantId: UUID(),

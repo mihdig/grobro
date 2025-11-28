@@ -285,7 +285,7 @@ public struct SubscriptionSettingsView: View {
         .manageSubscriptionsSheet(isPresented: $viewModel.showManageSubscription)
         #endif
             .sheet(isPresented: $showUpgradeSheet) {
-                if #available(iOS 18.0, *) {
+                if #available(iOS 18.0, macOS 15.0, *) {
                     UpgradeToProView()
                 }
             }

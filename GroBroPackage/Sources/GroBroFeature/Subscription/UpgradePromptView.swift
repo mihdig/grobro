@@ -99,7 +99,7 @@ public struct UpgradePromptView: View {
                 .padding(.horizontal)
                 .padding(.bottom, 32)
             }
-            .navigationBarTitleDisplayMode(.inline)
+            .inlineNavigationTitle()
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") {

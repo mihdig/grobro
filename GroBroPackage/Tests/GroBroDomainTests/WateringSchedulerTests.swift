@@ -3,6 +3,7 @@ import Foundation
 @testable import GroBroDomain
 
 @Suite("WateringScheduler Tests")
+@MainActor
 struct WateringSchedulerTests {
 
     // MARK: - Interval Calculation Tests

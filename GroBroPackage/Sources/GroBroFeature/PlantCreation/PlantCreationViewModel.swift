@@ -23,8 +23,10 @@ public final class PlantCreationViewModel: ObservableObject {
         !name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
 
-    public func savePlant() {
-        guard isValid else { return }
+    /// Attempts to save the plant. Returns true on success.
+    @discardableResult
+    public func savePlant() -> Bool {
+        guard isValid else { return false }
 
         let plant = Plant(
             name: name.trimmingCharacters(in: .whitespacesAndNewlines),
@@ -38,9 +40,11 @@ public final class PlantCreationViewModel: ObservableObject {
         do {
             let createdPlant = try plantStore.createPlant(plant)
             onPlantCreated?(createdPlant)
+            return true
         } catch {
             errorMessage = error.localizedDescription
             showError = true
+            return false
         }
     }
 }

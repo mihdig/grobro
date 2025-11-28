@@ -26,7 +26,7 @@ public struct DiagnosticsView: View {
                 }
             }
             .navigationTitle("Plant Check")
-            .navigationBarTitleDisplayMode(.inline)
+            .inlineNavigationTitle()
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") {
@@ -85,16 +85,16 @@ public struct DiagnosticsView: View {
     }
 
     private var analyzingView: some View {
-        VStack(spacing: 24) {
-            ProgressView()
-                .scaleEffect(1.5)
+        VStack {
+            Spacer()
 
-            Text("Analyzing your plant...")
-                .font(.headline)
+            GlassLoadingIndicator(
+                title: "Analyzing your plant...",
+                subtitle: "This may take a few moments",
+                style: .fullWidth
+            )
 
-            Text("This may take a few moments")
-                .font(.subheadline)
-                .foregroundColor(.secondary)
+            Spacer()
         }
         .padding()
     }
@@ -157,7 +157,7 @@ public struct DiagnosticsResultView: View {
                         .font(.body)
                 }
                 .padding()
-                .background(Color(.systemBackground))
+                .background(.background)
                 .cornerRadius(12)
                 .shadow(color: .black.opacity(0.1), radius: 5, y: 2)
                 .padding(.horizontal)
@@ -192,7 +192,7 @@ public struct DiagnosticsResultView: View {
                     )
                 }
                 .padding()
-                .background(Color(.systemBackground))
+                .background(.background)
                 .cornerRadius(12)
                 .shadow(color: .black.opacity(0.1), radius: 5, y: 2)
                 .padding(.horizontal)
@@ -215,7 +215,7 @@ public struct DiagnosticsResultView: View {
                     }
                 }
                 .padding()
-                .background(Color(.systemBackground))
+                .background(.background)
                 .cornerRadius(12)
                 .shadow(color: .black.opacity(0.1), radius: 5, y: 2)
                 .padding(.horizontal)

@@ -33,7 +33,7 @@ struct FeedingScheduleServiceTests {
         )
 
         // Manually add for testing
-        service.schedules = [schedule]
+        service.setSchedulesForTesting([schedule])
 
         let found = service.schedule(for: .floraSeries)
         #expect(found != nil)
@@ -64,7 +64,7 @@ struct FeedingScheduleServiceTests {
             safetyNotes: []
         )
 
-        service.schedules = [gheSchedule, anSchedule]
+        service.setSchedulesForTesting([gheSchedule, anSchedule])
 
         let gheSchedules = service.schedules(for: .generalHydroponics)
         #expect(gheSchedules.count == 1)
@@ -103,7 +103,7 @@ struct FeedingScheduleServiceTests {
             safetyNotes: []
         )
 
-        service.schedules = [schedule]
+        service.setSchedulesForTesting([schedule])
 
         let foundWeek = service.weeklyDosage(for: .floraSeries, week: 2)
         #expect(foundWeek != nil)
@@ -125,7 +125,7 @@ struct FeedingScheduleServiceTests {
             safetyNotes: []
         )
 
-        service.schedules = [schedule]
+        service.setSchedulesForTesting([schedule])
 
         let foundWeek = service.weeklyDosage(for: .floraSeries, week: 99)
         #expect(foundWeek == nil)

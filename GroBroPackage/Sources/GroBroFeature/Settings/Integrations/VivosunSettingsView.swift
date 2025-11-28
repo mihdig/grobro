@@ -98,8 +98,7 @@ public struct VivosunSettingsView: View {
                 .disabled(syncService.isSyncing)
             } else {
                 TextField("Email", text: $email)
-                    .keyboardType(.emailAddress)
-                    .textInputAutocapitalization(.never)
+                    .emailKeyboard()
                     .autocorrectionDisabled(true)
 
                 SecureField("Password", text: $password)

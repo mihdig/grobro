@@ -108,7 +108,7 @@ public struct ManualEnvironmentForm: View {
                 }
             }
             .navigationTitle("Log Environment")
-            .navigationBarTitleDisplayMode(.inline)
+            .inlineNavigationTitle()
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") {

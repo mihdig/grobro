@@ -2,7 +2,7 @@ import SwiftUI
 import GroBroDomain
 
 /// Feeding chart browser with Smart Greenhouse design
-@available(iOS 18.0, *)
+@available(iOS 18.0, macOS 15.0, *)
 public struct FeedingChartsView: View {
 
     @State private var scheduleService = FeedingScheduleService()
@@ -85,8 +85,11 @@ public struct FeedingChartsView: View {
                     .foregroundStyle(Color.secondaryText)
 
                 if scheduleService.isLoading {
-                    ProgressView()
-                        .tint(Color.electricGreen)
+                    GlassLoadingIndicator(
+                        title: "Loading feeding schedules…",
+                        subtitle: "Fetching nutrient charts",
+                        style: .inline
+                    )
                 }
             }
         }
@@ -112,7 +115,7 @@ public struct FeedingChartsView: View {
 
     private func scheduleButton(_ schedule: FeedingSchedule) -> some View {
         Button(action: {
-            withAnimation(.spring(response: 0.3)) {
+            withAnimation(SmartGreenhouseAnimations.cardPop) {
                 selectedSchedule = schedule
             }
         }) {
@@ -435,7 +438,7 @@ public struct FeedingChartsView: View {
             }
             .background(Color.deepBackground)
             .navigationTitle("Apply to Calculator")
-            .navigationBarTitleDisplayMode(.inline)
+            .inlineNavigationTitle()
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Close") {
@@ -486,7 +489,7 @@ public struct FeedingChartsView: View {
 // MARK: - Preview
 
 #if DEBUG
-@available(iOS 18.0, *)
+@available(iOS 18.0, macOS 15.0, *)
 #Preview {
     NavigationStack {
         FeedingChartsView()

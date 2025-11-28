@@ -19,6 +19,8 @@ struct AppEntry: App {
 
     @MainActor
     @State private var environmentalDataStore: EnvironmentalDataStore
+    @State private var widgetSyncService: WidgetSyncService
+    @State private var pendingDeepLink: DeepLinkDestination?
 
     // Onboarding manager
     @MainActor
@@ -40,8 +42,13 @@ struct AppEntry: App {
         self._deviceStore = State(initialValue: deviceStore)
 
         // Initialize environmental data store with device store dependency
-        self._environmentalDataStore = State(
-            initialValue: EnvironmentalDataStore(deviceStore: deviceStore)
+        let environmentalStore = EnvironmentalDataStore(deviceStore: deviceStore)
+        self._environmentalDataStore = State(initialValue: environmentalStore)
+        self._widgetSyncService = State(
+            initialValue: WidgetSyncService(
+                deviceStore: deviceStore,
+                environmentalDataStore: environmentalStore
+            )
         )
     }
     
@@ -55,7 +62,14 @@ struct AppEntry: App {
                 if onboardingManager.shouldShowOnboarding {
                     WelcomeView()
                 } else {
-                    GardenContainerView(plantStore: plantStore, eventStore: eventStore)
+                    GardenContainerView(
+                        plantStore: plantStore,
+                        eventStore: eventStore,
+                        deepLink: Binding(
+                            get: { pendingDeepLink },
+                            set: { pendingDeepLink = $0 }
+                        )
+                    )
                 }
             }
             .environment(\.managedObjectContext, persistenceController.viewContext)
@@ -63,7 +77,13 @@ struct AppEntry: App {
             .environment(deviceStore)              // Smart Greenhouse
             .environment(environmentalDataStore)   // Smart Greenhouse
             .environment(onboardingManager)        // Onboarding
+            .environment(widgetSyncService)
             .preferredColorScheme(.dark)  // Force dark mode for Smart Greenhouse aesthetic
+            .onOpenURL { url in
+                if let destination = DeepLinkDestination(url: url) {
+                    pendingDeepLink = destination
+                }
+            }
         }
     }
 }

@@ -46,7 +46,7 @@ struct DeviceIntegrationsView: View {
             .scrollContentBackground(.hidden)
         }
         .navigationTitle("Device Integrations")
-        .navigationBarTitleDisplayMode(.inline)
+        .inlineNavigationTitle()
         .sheet(isPresented: $showingConnectionWizard) {
             ACInfinityConnectionWizard { device in
                 showingConnectionWizard = false

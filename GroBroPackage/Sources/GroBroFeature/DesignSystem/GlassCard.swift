@@ -74,7 +74,7 @@ public struct GlassCard<Content: View>: View {
                 y: elevation.shadowY
             )
             .scaleEffect(isHighlighted ? 1.02 : 1.0)
-            .animation(.spring(response: 0.3, dampingFraction: 0.7), value: isHighlighted)
+            .motionSensitiveAnimation(SmartGreenhouseAnimations.cardPop, value: isHighlighted)
     }
 
     private var glassBackground: some View {

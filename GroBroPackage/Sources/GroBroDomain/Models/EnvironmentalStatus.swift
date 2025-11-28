@@ -47,6 +47,14 @@ public struct EnvironmentalStatus: Sendable {
             optimalTempRange = 65...80
             optimalHumidityRange = 40...55
             optimalVPDRange = 1.0...1.5
+        case .drying:
+            optimalTempRange = 60...70
+            optimalHumidityRange = 45...55
+            optimalVPDRange = 0.8...1.2
+        case .curing:
+            optimalTempRange = 60...70
+            optimalHumidityRange = 58...65
+            optimalVPDRange = 0.6...1.0
         }
 
         // Check if all metrics in optimal range

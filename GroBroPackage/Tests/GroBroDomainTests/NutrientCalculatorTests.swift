@@ -9,6 +9,7 @@ struct NutrientCalculatorTests {
     let calculator = NutrientCalculator()
 
     @Suite("PPM/EC/TDS Conversion Tests")
+    @MainActor
     struct ConversionTests {
 
         let calculator = NutrientCalculator()
@@ -43,6 +44,7 @@ struct NutrientCalculatorTests {
     }
 
     @Suite("Dosage Scaling Tests")
+    @MainActor
     struct DosageScalingTests {
 
         let calculator = NutrientCalculator()
@@ -99,6 +101,7 @@ struct NutrientCalculatorTests {
     }
 
     @Suite("PPM Recommendation Tests")
+    @MainActor
     struct RecommendationTests {
 
         let calculator = NutrientCalculator()
@@ -133,6 +136,7 @@ struct NutrientCalculatorTests {
     }
 
     @Suite("PPM Estimation Tests")
+    @MainActor
     struct EstimationTests {
 
         let calculator = NutrientCalculator()

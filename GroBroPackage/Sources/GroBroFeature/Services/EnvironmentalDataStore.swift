@@ -89,7 +89,7 @@ public final class EnvironmentalDataStore {
 
                 // Update state
                 await MainActor.run {
-                    withAnimation(.spring(response: 0.3)) {
+                    withAnimation(SmartGreenhouseAnimations.cardPop) {
                         dataByPlant[plantId] = envData
                     }
 
@@ -213,7 +213,7 @@ public final class EnvironmentalDataStore {
 
     /// Manually update environmental data (for testing or when offline)
     func updateData(_ data: RealtimeEnvironmentalData, for plantId: UUID) {
-        withAnimation(.spring(response: 0.3)) {
+        withAnimation(SmartGreenhouseAnimations.cardPop) {
             dataByPlant[plantId] = data
         }
 

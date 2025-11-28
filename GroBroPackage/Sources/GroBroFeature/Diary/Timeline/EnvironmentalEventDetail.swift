@@ -40,7 +40,7 @@ public struct EnvironmentalEventDetail: View {
                 }
             }
             .navigationTitle("Environmental Reading")
-            .navigationBarTitleDisplayMode(.inline)
+            .inlineNavigationTitle()
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Done") {

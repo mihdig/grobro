@@ -51,6 +51,8 @@ public struct NeonButton: View {
                 Text(title)
                     .font(.system(size: 16, weight: .medium))
                     .foregroundColor(foregroundColor)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.8)
             }
             .frame(maxWidth: fullWidth ? .infinity : nil)
             .padding(.vertical, 16)
@@ -66,6 +68,17 @@ public struct NeonButton: View {
             .opacity(isDisabled || isLoading ? 0.5 : 1.0)
         }
         .disabled(isLoading || isDisabled)
+        .accessibilityLabel(Text(title))
+        .accessibilityValue(
+            isLoading
+                ? Text("Loading")
+                : (isDisabled ? Text("Disabled") : Text(""))
+        )
+        .accessibilityHint(
+            isLoading
+                ? Text("Please wait for the action to finish")
+                : Text("Double tap to activate")
+        )
     }
 
     @ViewBuilder
@@ -136,6 +149,8 @@ extension NeonButton {
 
                 Text(title)
                     .font(.system(size: 16, weight: .medium))
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.8)
             }
             .foregroundColor(style == .primary || style == .destructive ? Color.deepBackground : Color.electricGreen)
             .frame(maxWidth: .infinity)
@@ -150,6 +165,13 @@ extension NeonButton {
             )
         }
         .disabled(isLoading)
+        .accessibilityLabel(Text(title))
+        .accessibilityValue(isLoading ? Text("Loading") : Text(""))
+        .accessibilityHint(
+            isLoading
+                ? Text("Please wait for the action to finish")
+                : Text("Double tap to activate")
+        )
     }
 
     private static func backgroundForStyle(_ style: ButtonStyle) -> some View {

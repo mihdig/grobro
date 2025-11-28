@@ -4,11 +4,12 @@ import GroBroDomain
 @available(iOS 17.0, *)
 public struct PlantDetailView: View {
     @StateObject private var viewModel: PlantDetailViewModel
-    @State private var selectedTab = 0
+    @State private var selectedTab: Int
     @State private var showingDiagnostics = false
 
-    public init(viewModel: PlantDetailViewModel) {
+    public init(viewModel: PlantDetailViewModel, initialTab: Int = 0) {
         _viewModel = StateObject(wrappedValue: viewModel)
+        _selectedTab = State(initialValue: initialTab)
     }
 
     public var body: some View {
@@ -55,7 +56,7 @@ public struct PlantDetailView: View {
                 }
                 .tag(6)
         }
-        .navigationBarTitleDisplayMode(.inline)
+        .inlineNavigationTitle()
         .sheet(isPresented: $showingDiagnostics) {
             DiagnosticsView(viewModel: viewModel.makeDiagnosticsViewModel())
         }
@@ -140,7 +141,7 @@ public struct PlantDetailView: View {
                     }
                 }
                 .padding()
-                .background(Color(.systemBackground))
+                .background(.background)
                 .cornerRadius(12)
                 .shadow(color: .black.opacity(0.1), radius: 5, y: 2)
                 .padding(.horizontal)
@@ -189,7 +190,7 @@ public struct PlantDetailView: View {
                     .controlSize(.large)
                 }
                 .padding()
-                .background(Color(.systemBackground))
+                .background(.background)
                 .cornerRadius(12)
                 .shadow(color: .black.opacity(0.1), radius: 5, y: 2)
                 .padding(.horizontal)
@@ -204,7 +205,7 @@ public struct PlantDetailView: View {
                         .foregroundColor(.secondary)
                 }
                 .padding()
-                .background(Color(.systemBackground))
+                .background(.background)
                 .cornerRadius(12)
                 .shadow(color: .black.opacity(0.1), radius: 5, y: 2)
                 .padding(.horizontal)
@@ -258,7 +259,7 @@ public struct PlantDetailView: View {
                     }
                 }
                 .padding()
-                .background(Color(.systemBackground))
+                .background(.background)
                 .cornerRadius(12)
                 .shadow(color: .black.opacity(0.1), radius: 5, y: 2)
                 .padding(.horizontal)
@@ -303,7 +304,7 @@ public struct PlantDetailView: View {
                         }
                     }
                     .padding()
-                    .background(Color(.systemBackground))
+                    .background(.background)
                     .cornerRadius(12)
                     .shadow(color: .black.opacity(0.1), radius: 5, y: 2)
                     .padding(.horizontal)
@@ -343,7 +344,7 @@ struct FeedbackButton: View {
                 Spacer()
             }
             .padding()
-            .background(Color(.secondarySystemBackground))
+            .background(Color.gray.opacity(0.1))
             .cornerRadius(10)
         }
         .buttonStyle(.plain)

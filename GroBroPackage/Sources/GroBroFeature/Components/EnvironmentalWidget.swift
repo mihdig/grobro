@@ -20,6 +20,7 @@ struct EnvironmentalWidget: View {
     let status: EnvironmentStatus
     let isConnected: Bool
 
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var isExpanded: Bool = false
     @State private var isPulsing: Bool = false
 
@@ -55,7 +56,7 @@ struct EnvironmentalWidget: View {
                 HStack(spacing: 12) {
                     Image(systemName: "antenna.radiowaves.left.and.right")
                         .foregroundColor(isConnected ? Color.electricGreen : Color.tertiaryText)
-                        .symbolEffect(.pulse, isActive: isConnected && isPulsing)
+                        .motionSensitiveSymbolEffect(.pulse, isActive: isConnected && isPulsing)
 
                     Text("Environment")
                         .font(.system(size: 16, weight: .semibold))
@@ -127,13 +128,32 @@ struct EnvironmentalWidget: View {
             }
         }
         .onTapGesture {
-            withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
+            if reduceMotion {
                 isExpanded.toggle()
+            } else {
+                withAnimation(SmartGreenhouseAnimations.cardPop) {
+                    isExpanded.toggle()
+                }
             }
         }
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("Environment status")
+        .accessibilityValue(
+            "Temperature \(Int(temperature)) degrees Fahrenheit, " +
+            "humidity \(Int(humidity)) percent, " +
+            "V P D \(String(format: "%.2f", vpd)) kilopascals, " +
+            status.label
+        )
+        .accessibilityHint(isExpanded ? "Double tap to collapse details" : "Double tap to expand for more details")
+        .accessibilityAddTraits(.isButton)
         .onAppear {
-            // Start pulsing animation for status indicator
-            withAnimation(.easeInOut(duration: 2).repeatForever(autoreverses: true)) {
+            // Start pulsing animation for status indicator, respecting Reduce Motion
+            guard !reduceMotion else {
+                isPulsing = false
+                return
+            }
+
+            withAnimation(SmartGreenhouseAnimations.pulse) {
                 isPulsing = true
             }
         }
@@ -159,14 +179,20 @@ struct MetricDisplay: View {
                 .font(.system(size: 18, weight: .semibold, design: .monospaced))
                 .foregroundColor(.primaryText)
                 .contentTransition(.numericText())
+                .lineLimit(1)
+                .minimumScaleFactor(0.7)
 
             Text(label)
                 .font(.system(size: 11, weight: .medium))
                 .foregroundColor(.tertiaryText)
                 .textCase(.uppercase)
                 .tracking(0.5)
+                .lineLimit(1)
         }
         .frame(maxWidth: .infinity)
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(label)
+        .accessibilityValue(value)
     }
 }
 

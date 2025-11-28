@@ -102,6 +102,8 @@ public final class NutrientCalculator: Sendable {
             return 400...800
         case .flowering:
             return 800...1400
+        case .drying, .curing:
+            return 0...0
         }
     }
 

@@ -8,6 +8,7 @@ struct ACInfinityConnectionWizard: View {
     let onComplete: (ACInfinityDevice) -> Void
 
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(DeviceStore.self) private var deviceStore
     @State private var currentStep: WizardStep = .deviceSelection
     @State private var selectedDevice: DiscoveredDevice?
@@ -61,7 +62,7 @@ struct ACInfinityConnectionWizard: View {
                 }
             }
             .navigationTitle("Connect Controller")
-            .navigationBarTitleDisplayMode(.inline)
+            .inlineNavigationTitle()
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") {
@@ -97,7 +98,7 @@ struct ACInfinityConnectionWizard: View {
             }
         }
         .frame(height: 4)
-        .animation(.spring(response: 0.3), value: currentStep)
+        .motionSensitiveAnimation(SmartGreenhouseAnimations.sheetSlide, value: currentStep)
     }
 
     private var progressPercentage: Double {
@@ -134,7 +135,7 @@ struct ACInfinityConnectionWizard: View {
                 Image(systemName: "antenna.radiowaves.left.and.right")
                     .font(.system(size: 64))
                     .foregroundColor(.electricGreen)
-                    .symbolEffect(.pulse, isActive: isScanning)
+                    .motionSensitiveSymbolEffect(.pulse, isActive: isScanning)
 
                 Text("Looking for Controllers")
                     .font(.system(size: 24, weight: .bold))
@@ -173,21 +174,13 @@ struct ACInfinityConnectionWizard: View {
 
     private var scanningPlaceholder: some View {
         GlassCard {
-            VStack(spacing: 16) {
-                ProgressView()
-                    .progressViewStyle(CircularProgressViewStyle(tint: .electricGreen))
-                    .scaleEffect(1.5)
-
-                Text("Scanning for devices...")
-                    .font(.system(size: 15))
-                    .foregroundColor(.secondaryText)
-
-                Text("This may take a few moments")
-                    .font(.system(size: 13))
-                    .foregroundColor(.tertiaryText)
-            }
+            GlassLoadingIndicator(
+                title: "Scanning for devices...",
+                subtitle: "This may take a few moments",
+                style: .fullWidth
+            )
             .frame(maxWidth: .infinity)
-            .padding(.vertical, 40)
+            .padding(.vertical, 8)
         }
     }
 
@@ -206,8 +199,12 @@ struct ACInfinityConnectionWizard: View {
 
     private func deviceCard(device: DiscoveredDevice) -> some View {
         Button {
-            withAnimation(.spring(response: 0.3)) {
+            if reduceMotion {
                 selectedDevice = device
+            } else {
+                withAnimation(SmartGreenhouseAnimations.cardPop) {
+                    selectedDevice = device
+                }
             }
         } label: {
             GlassCard(isHighlighted: selectedDevice?.id == device.id) {
@@ -293,7 +290,7 @@ struct ACInfinityConnectionWizard: View {
                 }
             }
             .navigationTitle("Manual Entry")
-            .navigationBarTitleDisplayMode(.inline)
+            .inlineNavigationTitle()
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") {
@@ -346,9 +343,11 @@ struct ACInfinityConnectionWizard: View {
                             .textFieldStyle(.plain)
                             .font(.system(size: 16))
                             .foregroundColor(.primaryText)
+                            #if os(iOS)
                             .textContentType(.username)
                             .autocapitalization(.none)
-                            .keyboardType(.emailAddress)
+                            #endif
+                            .emailKeyboard()
                     }
                     .padding(4)
                 }
@@ -655,8 +654,12 @@ struct ACInfinityConnectionWizard: View {
     private func goNext() {
         switch currentStep {
         case .deviceSelection:
-            withAnimation(.spring(response: 0.3)) {
+            if reduceMotion {
                 currentStep = .authentication
+            } else {
+                withAnimation(SmartGreenhouseAnimations.sheetSlide) {
+                    currentStep = .authentication
+                }
             }
 
         case .authentication:
@@ -671,7 +674,7 @@ struct ACInfinityConnectionWizard: View {
     }
 
     private func goBack() {
-        withAnimation(.spring(response: 0.3)) {
+        if reduceMotion {
             switch currentStep {
             case .authentication:
                 currentStep = .deviceSelection
@@ -679,6 +682,17 @@ struct ACInfinityConnectionWizard: View {
                 currentStep = .authentication
             default:
                 break
+            }
+        } else {
+            withAnimation(SmartGreenhouseAnimations.sheetSlide) {
+                switch currentStep {
+                case .authentication:
+                    currentStep = .deviceSelection
+                case .plantAssignment:
+                    currentStep = .authentication
+                default:
+                    break
+                }
             }
         }
     }
@@ -710,8 +724,12 @@ struct ACInfinityConnectionWizard: View {
                     connectedDevice = device
                     deviceStore.stopScanning()
                     isAuthenticating = false
-                    withAnimation(.spring(response: 0.3)) {
+                    if reduceMotion {
                         currentStep = .plantAssignment
+                    } else {
+                        withAnimation(SmartGreenhouseAnimations.sheetSlide) {
+                            currentStep = .plantAssignment
+                        }
                     }
                 }
             } catch {
@@ -724,13 +742,19 @@ struct ACInfinityConnectionWizard: View {
     }
 
     private func completeSetup() {
-        withAnimation(.spring(response: 0.4)) {
+        if reduceMotion {
             currentStep = .success
+        } else {
+            withAnimation(SmartGreenhouseAnimations.sheetSlide) {
+                currentStep = .success
+            }
         }
 
         // Celebration haptic
+        #if os(iOS)
         let impactFeedback = UIImpactFeedbackGenerator(style: .medium)
         impactFeedback.impactOccurred()
+        #endif
     }
 
     private func finishWizard() {
