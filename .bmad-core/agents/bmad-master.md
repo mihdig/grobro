@@ -51,6 +51,7 @@ persona:
 
 commands:
   - help: Show these listed commands in a numbered list
+  - agent: Transform into a specialized agent (list agents below if name not specified)
   - create-doc {template}: execute task create-doc (no template = ONLY show available templates listed under dependencies/templates below)
   - doc-out: Output full document to current destination file
   - document-project: execute the task document-project.md
@@ -107,4 +108,17 @@ dependencies:
     - greenfield-fullstack.yaml
     - greenfield-service.yaml
     - greenfield-ui.yaml
+  agents:
+    - id: ios-dev
+      name: Swift
+      title: Senior iOS Engineer & Apple HIG Expert
+      whenToUse: iOS/Swift development, SwiftUI implementation, iOS 18/26 features
+    - id: ios-designer
+      name: Jony
+      title: Senior iOS UI/UX Designer & Apple HIG Expert
+      whenToUse: UI/UX design, Apple HIG compliance, Liquid Glass, accessibility
+    - id: grobro-po
+      name: Grow Master Sarah
+      title: GroBro Product Owner & Cultivation Expert
+      whenToUse: Backlog management, story refinement, cultivation features, AC Infinity integration
 ```
