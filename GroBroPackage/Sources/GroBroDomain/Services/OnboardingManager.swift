@@ -33,6 +33,24 @@ public final class OnboardingManager: Sendable {
         hasCompletedWelcome && hasCreatedFirstPlant && hasAcceptedTerms
     }
 
+    /// Number of onboarding steps completed.
+    public var completedStepCount: Int {
+        var count = 0
+        if hasCompletedWelcome { count += 1 }
+        if hasCreatedFirstPlant { count += 1 }
+        if hasAcceptedTerms { count += 1 }
+        return count
+    }
+
+    /// Total number of tracked onboarding steps.
+    public var totalStepCount: Int { 3 }
+
+    /// Overall onboarding completion progress (0.0–1.0).
+    public var progress: Double {
+        guard totalStepCount > 0 else { return 0 }
+        return Double(completedStepCount) / Double(totalStepCount)
+    }
+
     /// Whether to show onboarding
     public var shouldShowOnboarding: Bool {
         !hasCompletedWelcome
@@ -73,7 +91,7 @@ public final class OnboardingManager: Sendable {
     /// Skip onboarding entirely (sets all flags to complete)
     public func skipOnboarding() {
         hasCompletedWelcome = true
-        hasCreatedFirstPlant = true
-        hasAcceptedTerms = true
+        // Allow the user to skip the guided welcome flow,
+        // but still require first plant creation and terms acceptance later.
     }
 }

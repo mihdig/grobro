@@ -72,9 +72,26 @@ public struct WelcomeView: View {
                             .tag(index)
                     }
                 }
+                #if os(iOS)
                 .tabViewStyle(.page(indexDisplayMode: .always))
                 .frame(height: 320)
                 .indexViewStyle(.page(backgroundDisplayMode: .always))
+                #else
+                .frame(height: 320)
+                #endif
+
+                // Onboarding progress
+                VStack(spacing: 4) {
+                    ProgressView(value: onboardingManager.progress)
+                        .progressViewStyle(.linear)
+                        .tint(.electricGreen)
+
+                    Text(progressLabel)
+                        .font(.system(size: 13, weight: .medium))
+                        .foregroundStyle(Color.secondaryText)
+                }
+                .padding(.horizontal, 32)
+                .padding(.top, 16)
 
                 Spacer()
 
@@ -98,6 +115,17 @@ public struct WelcomeView: View {
                 .padding(.horizontal, 32)
                 .padding(.bottom, 50)
             }
+        }
+    }
+
+    private var progressLabel: String {
+        let completed = onboardingManager.completedStepCount
+        let total = onboardingManager.totalStepCount
+
+        if onboardingManager.isOnboardingComplete {
+            return "Onboarding complete – you're ready to grow."
+        } else {
+            return "Onboarding progress: \(completed) of \(total) steps"
         }
     }
 }

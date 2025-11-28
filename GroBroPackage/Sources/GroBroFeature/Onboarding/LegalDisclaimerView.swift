@@ -69,7 +69,7 @@ public struct LegalDisclaimerView: View {
                 }
             }
             .navigationTitle("Legal & Terms")
-            .navigationBarTitleDisplayMode(.inline)
+            .inlineNavigationTitle()
         }
     }
 
