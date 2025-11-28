@@ -65,3 +65,25 @@ public final class PlantDetailViewModel: ObservableObject {
         DebugConsoleViewModel(plant: plant)
     }
 }
+
+// MARK: - Preview Support
+
+#if DEBUG
+extension PlantDetailViewModel {
+    static func preview() -> PlantDetailViewModel {
+        let plant = Plant(
+            id: UUID(),
+            name: "Northern Lights",
+            strainName: "Indica Dominant",
+            startDate: Calendar.current.date(byAdding: .day, value: -21, to: Date()) ?? Date(),
+            stage: .vegetative,
+            potSizeLiters: 11.0,
+            substrateType: .coco,
+            lightHoursPerDay: 18.0,
+            notes: "Healthy growth, topped once at week 3."
+        )
+        let plantStore = PlantStore()
+        return PlantDetailViewModel(plant: plant, plantStore: plantStore)
+    }
+}
+#endif
